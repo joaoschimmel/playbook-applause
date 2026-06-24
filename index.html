@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applause · Sales Playbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --navy: #1e2543;
+    --yellow: #f5c518;
+    --yellow-light: #fff9e6;
+    --cream: #f9f8f4;
+    --border: #e8e4d9;
+    --text: #1e2543;
+    --muted: #929c9a;
+    --white: #ffffff;
+    --green: #29C766;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --blue: #538CF8;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    min-height: 100vh;
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-logo .logo-mark {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar-logo .logo-mark span { color: var(--yellow); }
+  .sidebar-logo .logo-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .sidebar-section { padding: 16px 0 4px; }
+  .sidebar-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 0 20px;
+    margin-bottom: 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .nav-item.active { background: rgba(245,197,24,0.12); color: var(--yellow); border-left-color: var(--yellow); }
+  .nav-item .icon { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
+
+  .sidebar-ai-btn {
+    margin: 12px 16px;
+    background: var(--yellow);
+    color: var(--navy);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: calc(100% - 32px);
+    transition: opacity 0.15s;
+    margin-top: auto;
+    margin-bottom: 20px;
+  }
+  .sidebar-ai-btn:hover { opacity: 0.9; }
+
+  /* MAIN */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    padding: 0;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .topbar-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .topbar-badges { display: flex; gap: 8px; }
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--yellow-light);
+    color: var(--navy);
+    border: 1px solid rgba(245,197,24,0.3);
+  }
+  .badge.green { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
+  .badge.blue { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+
+  /* PAGE SECTIONS */
+  .page { display: none; padding: 32px; }
+  .page.active { display: block; }
+
+  /* HERO SECTION */
+  .hero {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 40px 44px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--yellow);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    max-width: 520px;
+  }
+
+  .hero h1 span { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+
+  .hero-stat .val {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--yellow);
+  }
+
+  .hero-stat .lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 16px; }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f2f4f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .card-body { padding: 20px; }
+
+  /* ANIMAL CARDS */
+  .animal-card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .animal-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,37,67,0.08); }
+  .animal-card.baleia { border-color: #6366f1; }
+  .animal-card.elefante { border-color: #8b5cf6; }
+  .animal-card.cavalo { border-color: #3b82f6; }
+  .animal-card.marinho { border-color: #10b981; }
+
+  .animal-emoji { font-size: 28px; margin-bottom: 10px; }
+  .animal-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .animal-tier { font-size: 11px; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .animal-mrr {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 12px;
+  }
+
+  .animal-detail { font-size: 12px; color: var(--muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .animal-detail strong { color: var(--navy); font-weight: 600; }
+
+  /* FUNIL */
+  .funnel-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f2f4f7;
+  }
+  .funnel-step:last-child { border-bottom: none; }
+
+  .funnel-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .funnel-content { flex: 1; }
+  .funnel-stage { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .funnel-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  .funnel-gate {
+    font-size: 11px;
+    background: var(--yellow-light);
+    color: var(--navy);
+    border: 1px solid rgba(245,197,24,0.3);
+    border-radius: 6px;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  /* QUALIFICAÇÃO */
+  .criterio-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+  }
+
+  .criterio-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .criterio-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .criterio-title { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; color: var(--navy); }
+  .criterio-question { font-size: 12px; color: var(--muted); }
+
+  .campo-list { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+  .campo-item {
+    font-size: 12px;
+    color: var(--text);
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .campo-item::before { content: '·'; color: var(--muted); }
+
+  /* TEAM */
+  .team-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  .team-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .team-role { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* CADÊNCIA */
+  .cad-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cad-dia {
+    text-align: center;
+    padding: 10px 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 4px;
+    min-width: 68px;
+  }
+
+  .cad-dia .day { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+  .cad-dia .icon { font-size: 18px; margin-bottom: 2px; }
+  .cad-dia .type { font-size: 11px; font-weight: 600; color: var(--navy); }
+
+  /* LINK CARDS */
+  .link-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .link-card:hover { border-color: var(--yellow); background: var(--yellow-light); }
+
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .link-icon.yellow { background: var(--yellow-light); }
+  .link-icon.navy { background: var(--navy); }
+  .link-icon.green { background: #f0fdf4; }
+  .link-icon.purple { background: #f5f3ff; }
+
+  .link-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .link-desc { font-size: 12px; color: var(--muted); }
+
+  .link-arrow { margin-left: auto; color: var(--muted); font-size: 16px; }
+
+  /* METAS TABLE */
+  .meta-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .meta-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 11px;
+  }
+  .meta-table th:first-child { border-radius: 8px 0 0 0; }
+  .meta-table th:last-child { border-radius: 0 8px 0 0; text-align: right; }
+  .meta-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f2f4f7;
+    color: var(--text);
+  }
+  .meta-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); }
+  .meta-table tr:last-child td { border: none; background: var(--cream); font-weight: 700; }
+  .meta-table .highlight { color: var(--yellow); font-weight: 700; }
+
+  /* AI PANEL */
+  .ai-panel {
+    position: fixed;
+    right: 0; top: 0; bottom: 0;
+    width: 400px;
+    background: var(--white);
+    border-left: 1px solid var(--border);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .ai-panel.open { transform: translateX(0); }
+
+  .ai-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--navy);
+  }
+
+  .ai-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-close {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-msg {
+    max-width: 90%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .ai-msg.bot {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--navy);
+    align-self: flex-start;
+    border-radius: 4px 12px 12px 12px;
+  }
+
+  .ai-msg.user {
+    background: var(--navy);
+    color: var(--white);
+    align-self: flex-end;
+    border-radius: 12px 4px 12px 12px;
+  }
+
+  .ai-msg.loading { color: var(--muted); font-style: italic; }
+
+  .ai-suggestions {
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .ai-suggestion {
+    font-size: 11px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--navy);
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+
+  .ai-suggestion:hover { background: var(--yellow-light); border-color: var(--yellow); }
+
+  .ai-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+  }
+
+  .ai-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    color: var(--navy);
+    background: var(--cream);
+  }
+
+  .ai-input:focus { border-color: var(--yellow); background: var(--white); }
+
+  .ai-send {
+    background: var(--navy);
+    color: var(--yellow);
+    border: none;
+    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+  .ai-send:hover { opacity: 0.85; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  /* VERTICAL CARDS (Outbound) */
+  .vertical-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    padding: 18px;
+  }
+
+  .vertical-card.cpg { border-color: var(--orange); }
+  .vertical-card.fin { border-color: var(--blue); }
+  .vertical-card.var { border-color: var(--green); }
+
+  .vertical-name { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .vertical-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .vertical-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+  }
+  .vertical-card.cpg .vertical-tag { background: rgba(245,158,11,0.1); color: var(--orange); }
+  .vertical-card.fin .vertical-tag { background: rgba(83,140,248,0.1); color: var(--blue); }
+  .vertical-card.var .vertical-tag { background: rgba(41,199,102,0.1); color: var(--green); }
+  .vertical-num { font-size: 22px; font-weight: 800; }
+  .vertical-card.cpg .vertical-num { color: var(--orange); }
+  .vertical-card.fin .vertical-num { color: var(--blue); }
+  .vertical-card.var .vertical-num { color: var(--green); }
+
+  /* POSITIONING */
+  .pos-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 0;
+    border-bottom: 1px solid #f2f4f7;
+    padding: 12px 0;
+    align-items: start;
+  }
+  .pos-row:last-child { border: none; }
+  .pos-label { font-size: 12px; font-weight: 600; color: var(--navy); }
+  .pos-comp { font-size: 12px; color: var(--muted); }
+  .pos-diff { font-size: 12px; color: var(--text); line-height: 1.5; }
+
+  /* PRIVATE BADGE */
+  .private-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-weight: 600;
+  }
+
+  /* ONBOARDING STEPS */
+  .onboard-step {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f2f4f7;
+  }
+  .onboard-step:last-child { border: none; }
+  .onboard-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .onboard-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .onboard-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">👋 <span>applause</span></div>
+    <div class="logo-sub">Sales Playbook 2026</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Principal</div>
+    <div class="nav-item active" onclick="showPage('home')"><span class="icon">🏠</span> Início</div>
+    <div class="nav-item" onclick="showPage('produto')"><span class="icon">📦</span> O Produto</div>
+    <div class="nav-item" onclick="showPage('icp')"><span class="icon">🎯</span> ICP & Animais</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Processo de Vendas</div>
+    <div class="nav-item" onclick="showPage('qualificacao')"><span class="icon">✅</span> Qualificação</div>
+    <div class="nav-item" onclick="showPage('funil')"><span class="icon">🔽</span> Funil HubSpot</div>
+    <div class="nav-item" onclick="showPage('cadencias')"><span class="icon">📞</span> Cadências</div>
+    <div class="nav-item" onclick="showPage('outbound')"><span class="icon">🚀</span> Outbound BDR</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Time & Metas</div>
+    <div class="nav-item" onclick="showPage('time')"><span class="icon">👥</span> Time</div>
+    <div class="nav-item" onclick="showPage('metas')"><span class="icon">📊</span> Metas</div>
+    <div class="nav-item" onclick="showPage('comissoes')"><span class="icon">💰</span> Comissões</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Recursos</div>
+    <div class="nav-item" onclick="showPage('calls')"><span class="icon">🎙️</span> Calls de Referência</div>
+    <div class="nav-item" onclick="showPage('hubspot')"><span class="icon">🔗</span> HubSpot</div>
+    <div class="nav-item" onclick="showPage('onboarding')"><span class="icon">🎓</span> Onboarding</div>
+  </div>
+
+  <button class="sidebar-ai-btn" onclick="toggleAI()">
+    ✨ Perguntar ao Playbook
+  </button>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Início</div>
+    <div class="topbar-badges">
+      <span class="badge green">🟢 Ativo</span>
+      <span class="badge blue">Meta 2026: R$10M ARR</span>
+      <span class="badge">Jul/26 → Jun/27</span>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-eyebrow">GTM 2026 · Alinhamento Interno</div>
+      <h1>A plataforma definitiva da performance <span>nos canais de venda.</span></h1>
+      <p class="hero-sub">Incentiva comportamentos, comunica, engaja e alavanca resultados — de ponta a ponta. Este é o guia oficial do time comercial Applause.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="val">R$10M</div><div class="lbl">Meta de Novo ARR 2026</div></div>
+        <div class="hero-stat"><div class="val">R$5.6M</div><div class="lbl">ARR Atual</div></div>
+        <div class="hero-stat"><div class="val">3×1</div><div class="lbl">Rumo ao 3×1</div></div>
+        <div class="hero-stat"><div class="val">93</div><div class="lbl">Deals a fechar no ano</div></div>
+      </div>
+    </div>
+
+    <div class="grid-4">
+      <div class="card" style="cursor:pointer" onclick="showPage('icp')">
+        <div class="card-body" style="text-align:center; padding:20px 16px;">
+          <div style="font-size:28px;margin-bottom:8px;">🐋</div>
+          <div class="card-title" style="font-size:13px;">Os 4 Animais</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px;">Baleia · Elefante · Cavalo · Marinho</div>
+        </div>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="showPage('qualificacao')">
+        <div class="card-body" style="text-align:center; padding:20px 16px;">
+          <div style="font-size:28px;margin-bottom:8px;">✅</div>
+          <div class="card-title" style="font-size:13px;">Qualificação</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px;">4 critérios · 11 campos</div>
+        </div>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="showPage('funil')">
+        <div class="card-body" style="text-align:center; padding:20px 16px;">
+          <div style="font-size:28px;margin-bottom:8px;">🔽</div>
+          <div class="card-title" style="font-size:13px;">Funil HubSpot</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px;">8 etapas com gates</div>
+        </div>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="showPage('calls')">
+        <div class="card-body" style="text-align:center; padding:20px 16px;">
+          <div style="font-size:28px;margin-bottom:8px;">🎙️</div>
+          <div class="card-title" style="font-size:13px;">Calls</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px;">Pre-Sales · Demo · Fechamento</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Posicionamento Central</div></div>
+        <div class="card-body">
+          <div style="background:var(--navy);border-radius:12px;padding:18px;margin-bottom:14px;">
+            <div style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--white);line-height:1.5;">"A Applause é a ponte entre <span style="color:var(--yellow);">comportamento e resultado</span> — do incentivo ao reconhecimento."</div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Tom de voz</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="badge">Direto ao ponto</span>
+            <span class="badge">Confiante</span>
+            <span class="badge">Alegre</span>
+            <span class="badge">Parceiro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Dores que resolvemos</div></div>
+        <div class="card-body">
+          <div class="campo-list">
+            <div class="campo-item">Não consegue gerar comportamento na ponta</div>
+            <div class="campo-item">Equipes difíceis de engajar</div>
+            <div class="campo-item">Baixa visibilidade do que acontece no canal</div>
+            <div class="campo-item">Gestão via WhatsApp e planilhas</div>
+            <div class="campo-item">Campanhas pontuais sem efeito contínuo</div>
+            <div class="campo-item">Premiação sempre para poucas pessoas</div>
+            <div class="campo-item">Comunicação fragmentada</div>
+            <div class="campo-item">Gestão manual de compra de brindes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUTO -->
+  <div class="page" id="page-produto">
+    <div class="hero">
+      <div class="hero-eyebrow">O Produto</div>
+      <h1>Maior que um software de <span>incentivos.</span></h1>
+      <p class="hero-sub">Nosso wedge é automação de incentivo para canais indiretos. O mercado real é a convergência de 6 categorias enterprise — sem incumbent claro.</p>
+    </div>
+
+    <div class="section-title">6 Categorias que unificamos</div>
+    <div class="grid-3">
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">🏆</div>
+        <div class="card-title" style="margin-bottom:6px;">Channel Incentive Management</div>
+        <div style="font-size:12px;color:var(--muted);">Programas de incentivo de trade, performance de reps, motivação de parceiros.</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">💰</div>
+        <div class="card-title" style="margin-bottom:6px;">Trade Incentives Management</div>
+        <div style="font-size:12px;color:var(--muted);">Recompensas sell-out, promoções sell-in, execução de trade.</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">🎮</div>
+        <div class="card-title" style="margin-bottom:6px;">Sales Gamification</div>
+        <div style="font-size:12px;color:var(--muted);">Missões, rankings, badges — engajamento diário no ponto de venda.</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">📊</div>
+        <div class="card-title" style="margin-bottom:6px;">Channel Analytics</div>
+        <div style="font-size:12px;color:var(--muted);">Sell-through, mix regional, ROI de parceiros — visibilidade ponta a ponta.</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">📋</div>
+        <div class="card-title" style="margin-bottom:6px;">Sales Compensation</div>
+        <div style="font-size:12px;color:var(--muted);">Remuneração variável, SPIFFs, regras de comissão — instrumentado no workflow.</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:20px;margin-bottom:8px;">📣</div>
+        <div class="card-title" style="margin-bottom:6px;">Promotion Marketing Mgmt</div>
+        <div style="font-size:12px;color:var(--muted);">Orquestração de campanhas, evidências, aprovação — em escala e em tempo real.</div>
+      </div></div>
+    </div>
+
+    <div class="section-title">Posicionamento Competitivo</div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Contra quem nos posicionamos</div></div>
+      <div class="card-body">
+        <div class="pos-row" style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding-top:0;">
+          <div>Concorrente</div><div>O que resolvem</div><div>Nossa diferença</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-label">📊 Planilhas + WhatsApp</div>
+          <div class="pos-comp">"Funciona" hoje, baixo custo aparente</div>
+          <div class="pos-diff">Tudo em um lugar só, estruturado e automatizado.</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-label">🎮 Incentive-me, Gamific</div>
+          <div class="pos-comp">Premiação pontual e campanhas isoladas</div>
+          <div class="pos-diff">Gestão contínua + IA + marketplace + integrações enterprise em uma plataforma só.</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-label">📈 BI + Plataforma de Premiação</div>
+          <div class="pos-comp">Visibilidade e premiação, sem comportamento</div>
+          <div class="pos-diff">A única que conecta comportamento → comunicação → engajamento → resultado → recompensa.</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-label">💳 Flash, Caju, Swile</div>
+          <div class="pos-comp">Como pagar o incentivo</div>
+          <div class="pos-diff">Plataforma completa: das mecânicas ao pagamento em um lugar só.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px;">Roadmap de Produto 2026</div>
+    <div class="grid-4">
+      <div class="card"><div class="card-body">
+        <div style="font-size:11px;background:var(--yellow-light);color:var(--navy);border-radius:6px;padding:2px 8px;display:inline-block;font-weight:600;margin-bottom:8px;">Jul/Ago 2026</div>
+        <div class="card-title" style="margin-bottom:6px;">💬 Messaging</div>
+        <div style="font-size:12px;color:var(--muted);">Reconhecimento em escala na plataforma.</div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);margin-top:8px;">+R$800/mês/conta</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:11px;background:var(--yellow-light);color:var(--navy);border-radius:6px;padding:2px 8px;display:inline-block;font-weight:600;margin-bottom:8px;">Ago/Set 2026</div>
+        <div class="card-title" style="margin-bottom:6px;">🔗 Integrações</div>
+        <div style="font-size:12px;color:var(--muted);">Salesforce, SAP, HubSpot, Bling, Pipefy.</div>
+        <div style="font-size:13px;font-weight:700;color:var(--blue);margin-top:8px;">−30 dias de ciclo</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:11px;background:var(--yellow-light);color:var(--navy);border-radius:6px;padding:2px 8px;display:inline-block;font-weight:600;margin-bottom:8px;">Out 2026</div>
+        <div class="card-title" style="margin-bottom:6px;">📊 Channel Analytics</div>
+        <div style="font-size:12px;color:var(--muted);">Insights de POS e canal, sell-through, rankings.</div>
+        <div style="font-size:13px;font-weight:700;color:var(--orange);margin-top:8px;">+R$1.5k MRR/conta</div>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="font-size:11px;background:var(--navy);color:var(--yellow);border-radius:6px;padding:2px 8px;display:inline-block;font-weight:600;margin-bottom:8px;">Sempre Ativo</div>
+        <div class="card-title" style="margin-bottom:6px;">🤖 AI Approval</div>
+        <div style="font-size:12px;color:var(--muted);">Audita resgates e campanhas automaticamente.</div>
+        <div style="font-size:13px;font-weight:700;color:var(--yellow);margin-top:8px;">R$2k–R$8k MRR</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ICP -->
+  <div class="page" id="page-icp">
+    <div class="section-title">ICP · Para quem existimos</div>
+    <p class="section-sub">Segmentação estratégica do pipeline comercial. Quatro perfis de cliente, cada um com porte, MRR esperado e ciclo de venda definidos.</p>
+
+    <div class="grid-4">
+      <div class="animal-card baleia">
+        <div class="animal-emoji">🐋</div>
+        <div class="animal-name">Baleia</div>
+        <div class="animal-tier">KA · Key Account</div>
+        <div class="animal-mrr">R$25k MRR</div>
+        <div class="animal-detail"><span>Funcionários</span><strong>5.001+</strong></div>
+        <div class="animal-detail"><span>Incentivados</span><strong>4.001+</strong></div>
+        <div class="animal-detail"><span>ARR médio</span><strong>R$300k</strong></div>
+        <div class="animal-detail"><span>Ciclo</span><strong>~6 meses</strong></div>
+        <div class="animal-detail"><span>Estratégia</span><strong>ABM · Eventos</strong></div>
+        <div style="margin-top:10px;"><span class="badge">Analista+ aceito</span></div>
+      </div>
+      <div class="animal-card elefante">
+        <div class="animal-emoji">🐘</div>
+        <div class="animal-name">Elefante</div>
+        <div class="animal-tier">Enterprise-2</div>
+        <div class="animal-mrr">R$12.5k MRR</div>
+        <div class="animal-detail"><span>Funcionários</span><strong>2.001–5.000</strong></div>
+        <div class="animal-detail"><span>Incentivados</span><strong>1.001–4.000</strong></div>
+        <div class="animal-detail"><span>ARR médio</span><strong>R$150k</strong></div>
+        <div class="animal-detail"><span>Ciclo</span><strong>~5 meses</strong></div>
+        <div class="animal-detail"><span>Estratégia</span><strong>Outbound · Inbound</strong></div>
+        <div style="margin-top:10px;"><span class="badge">Analista+ aceito</span></div>
+      </div>
+      <div class="animal-card cavalo">
+        <div class="animal-emoji">🐴</div>
+        <div class="animal-name">Cavalo</div>
+        <div class="animal-tier">Enterprise-1</div>
+        <div class="animal-mrr">R$6.7k MRR</div>
+        <div class="animal-detail"><span>Funcionários</span><strong>501–2.000</strong></div>
+        <div class="animal-detail"><span>Incentivados</span><strong>251–1.000</strong></div>
+        <div class="animal-detail"><span>ARR médio</span><strong>R$80k</strong></div>
+        <div class="animal-detail"><span>Ciclo</span><strong>~3 meses</strong></div>
+        <div class="animal-detail"><span>Estratégia</span><strong>Outbound · Inbound</strong></div>
+        <div style="margin-top:10px;"><span class="badge">Coord/Gerente min.</span></div>
+      </div>
+      <div class="animal-card marinho">
+        <div class="animal-emoji">🦀</div>
+        <div class="animal-name">Cavalo Marinho</div>
+        <div class="animal-tier">SMB</div>
+        <div class="animal-mrr">R$3.5k MRR</div>
+        <div class="animal-detail"><span>Funcionários</span><strong>51–500</strong></div>
+        <div class="animal-detail"><span>Incentivados</span><strong>51–250</strong></div>
+        <div class="animal-detail"><span>ARR médio</span><strong>R$42k</strong></div>
+        <div class="animal-detail"><span>Ciclo</span><strong>~1 mês</strong></div>
+        <div class="animal-detail"><span>Estratégia</span><strong>Inbound</strong></div>
+        <div style="margin-top:10px;"><span class="badge">Acesso direto ao decisor</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:8px;">
+      <div class="card-header">
+        <div class="card-title">🐀 Rato (VSB) — NÃO VENDER</div>
+        <span class="badge" style="background:#fef2f2;color:#dc2626;border-color:#fecaca;">Desqualificação Imediata</span>
+      </div>
+      <div class="card-body">
+        <div style="font-size:13px;color:var(--muted);">Menos de 50 funcionários. Custo de aquisição não compensa. <strong style="color:var(--red);">Mover para Perdido imediatamente.</strong></div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px;">Segmentos-foco</div>
+    <div class="grid-4">
+      <div class="card"><div class="card-body" style="text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🏭</div><div class="card-title" style="font-size:13px;">Indústria de Bens de Consumo</div></div></div>
+      <div class="card"><div class="card-body" style="text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🛍️</div><div class="card-title" style="font-size:13px;">Varejo & Franquias</div></div></div>
+      <div class="card"><div class="card-body" style="text-align:center;"><div style="font-size:24px;margin-bottom:6px;">💼</div><div class="card-title" style="font-size:13px;">Times Comerciais</div></div></div>
+      <div class="card"><div class="card-body" style="text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🏦</div><div class="card-title" style="font-size:13px;">Financeiro & Seguros</div></div></div>
+    </div>
+  </div>
+
+  <!-- QUALIFICAÇÃO -->
+  <div class="page" id="page-qualificacao">
+    <div class="section-title">Qualificação de Leads</div>
+    <p class="section-sub">4 critérios obrigatórios — lógica AND. Um único ✗ desqualifica. Todos precisam ser ✓ para agendar reunião com o AE.</p>
+
+    <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
+      <a href="https://docs.google.com/presentation/d/1QbM4zjN2Qlj1vtb7kblnrUV-QZ7DQ107Yng4cWpOs5o/edit" target="_blank" class="link-card" style="flex:1;min-width:200px;">
+        <div class="link-icon yellow">📊</div>
+        <div><div class="link-title">Apresentação Completa</div><div class="link-desc">Slides de Qualificação · Google Slides</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="criterio-card">
+      <div class="criterio-header">
+        <div class="criterio-dot" style="background:#ef4444;"></div>
+        <div>
+          <div class="criterio-title">C1 · Dor / Implicação</div>
+          <div class="criterio-question">O lead tem dor que a Applause resolve E verbalizou que impacta seus resultados?</div>
+        </div>
+      </div>
+      <div class="campo-list">
+        <div class="campo-item">Hipótese de Dor Principal — qual dor o Pré-Vendedor identificou</div>
+        <div class="campo-item">Status da Implicação — lead verbalizou que a dor impacta seus resultados?</div>
+      </div>
+    </div>
+
+    <div class="criterio-card">
+      <div class="criterio-header">
+        <div class="criterio-dot" style="background:#f59e0b;"></div>
+        <div>
+          <div class="criterio-title">C2 · Pré-Req. Operação</div>
+          <div class="criterio-question">A empresa tem estrutura ou disposição para operar campanhas de incentivo?</div>
+        </div>
+      </div>
+      <div class="campo-list">
+        <div class="campo-item">Possui cultura de incentivo — grau de maturidade</div>
+        <div class="campo-item">Práticas de Reconhecimento Hoje — o que já faz concretamente</div>
+        <div class="campo-item">Como é o processo de incentivo hoje — mapeamento operacional</div>
+        <div class="campo-item">Escopo de Utilização — qual área usaria a plataforma</div>
+      </div>
+    </div>
+
+    <div class="criterio-card">
+      <div class="criterio-header">
+        <div class="criterio-dot" style="background:#10b981;"></div>
+        <div>
+          <div class="criterio-title">C3 · Pré-Req. Financeiro</div>
+          <div class="criterio-question">Há budget disponível ou evidência de gasto histórico na categoria?</div>
+        </div>
+      </div>
+      <div class="campo-list">
+        <div class="campo-item">Possui plataforma de Premiação — proxy de budget histórico</div>
+        <div class="campo-item">Budget Disponível — capacidade financeira confirmada</div>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:8px 12px;">
+        ⚠️ Para Baleia e Elefante, este critério é <strong>SUBENTENDIDO</strong> — empresa grande tem verba. Confirmar só se houver sinal de dúvida.
+      </div>
+    </div>
+
+    <div class="criterio-card">
+      <div class="criterio-header">
+        <div class="criterio-dot" style="background:#538CF8;"></div>
+        <div>
+          <div class="criterio-title">C4 · Fit de Perfil</div>
+          <div class="criterio-question">A empresa tem porte mínimo e o contato tem acesso ao decisor?</div>
+        </div>
+      </div>
+      <div class="campo-list">
+        <div class="campo-item">Número de Funcionários — porte e animal preliminar (&lt;51 = desqualificado)</div>
+        <div class="campo-item">Potencial de Incentivados — confirma o animal e o MRR esperado</div>
+        <div class="campo-item">Cargo Atual — acesso ao decisor (regra diferente por animal)</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px;">Regras por Animal</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🐋 Baleia & 🐘 Elefante</div></div>
+        <div class="card-body">
+          <div class="campo-list">
+            <div class="campo-item">✅ DOR: ≥1 dor + verbalizou impacto</div>
+            <div class="campo-item">✅ OPERAÇÃO: prática ativa + processo sem incompatibilidades</div>
+            <div class="campo-item">⬜ FINANCEIRO: subentendido (confirmar só se houver dúvida)</div>
+            <div class="campo-item">✅ PERFIL: porte + Analista+ com plano de escalada ao decisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🐴 Cavalo & 🦀 Cavalo Marinho</div></div>
+        <div class="card-body">
+          <div class="campo-list">
+            <div class="campo-item">✅ DOR: ≥1 dor + implicação verbalizada (sem = nutrição)</div>
+            <div class="campo-item">✅ OPERAÇÃO: cultura de incentivo + prática ativa compatível</div>
+            <div class="campo-item">✅ FINANCEIRO: OBRIGATÓRIO validar ativamente</div>
+            <div class="campo-item">✅ PERFIL: Coord+ com acesso ao decisor (Cavalo) / Decisor direto (Marinho)</div>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:var(--muted);background:#fef2f2;border-radius:8px;padding:8px 12px;">
+            ⚠️ Cavalo Marinho: 2 custos separados — mensalidade + verba de incentivo. Ambos devem ser confirmados.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUNIL -->
+  <div class="page" id="page-funil">
+    <div class="section-title">Funil de Vendas · HubSpot</div>
+    <p class="section-sub">8 etapas com gate de avanço obrigatório. Sem preenchimento dos campos = sem avanço no pipeline.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Etapas do Funil</div></div>
+        <div class="card-body" style="padding:0 20px;">
+          <div class="funnel-step">
+            <div class="funnel-num">1</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">📥 A Trabalhar</div>
+              <div class="funnel-desc">Lead entra — formulário ou outbound. BDR valida porte. Se &lt;51 func → Perdido.</div>
+              <span class="funnel-gate">Gate: dados básicos preenchidos</span>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">2</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">📡 Em Cadência</div>
+              <div class="funnel-desc">BDR inicia contato ativo (email, WhatsApp, ligação). Nenhum avanço sem resposta ativa.</div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">3</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">💬 Em Conexão</div>
+              <div class="funnel-desc">Lead respondeu com interesse. BDR qualifica os 4 critérios por telefone/WhatsApp.</div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">4</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">📅 Reunião Agendada</div>
+              <div class="funnel-desc">Passou pelos 4 critérios. BDR agenda com AE como host e Deal Owner.</div>
+              <span class="funnel-gate">Gate: campos de qualificação + briefing preenchidos</span>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">5</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">🎯 Apresentação Feita</div>
+              <div class="funnel-desc">AE conduz reunião, apresenta solução, aprofunda dor e implicação (Q2 EDUCATE).</div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">6</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">📄 Proposta Enviada</div>
+              <div class="funnel-desc">AE envia proposta formal.</div>
+              <span class="funnel-gate">Gate: decisor identificado + valor alinhado</span>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">7</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">🤝 Negociação</div>
+              <div class="funnel-desc">Cliente negociando valor, prazo ou escopo. AE mapeia objeções e critérios de decisão.</div>
+            </div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-num">8</div>
+            <div class="funnel-content">
+              <div class="funnel-stage">✅ Em Fechamento</div>
+              <div class="funnel-desc">Sinal positivo verbal. Jurídico, Compras e Financeiro acionados.</div>
+              <span class="funnel-gate">Gate: contrato assinado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <div class="card-header"><div class="card-title">Funil por Tier — Conversão</div></div>
+          <div class="card-body" style="padding:0;">
+            <table class="meta-table" style="font-size:11px;">
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>Leads</th>
+                  <th>Won</th>
+                  <th>L→Won</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>🐋 Baleias</td><td>460</td><td>14</td><td class="highlight">3.0%</td></tr>
+                <tr><td>🐘 Elefantes</td><td>702</td><td>23</td><td class="highlight">3.3%</td></tr>
+                <tr><td>🐴 Cavalos</td><td>1.114</td><td>44</td><td class="highlight">3.9%</td></tr>
+                <tr><td>🦀 Marinhos</td><td>240</td><td>12</td><td class="highlight">5.0%</td></tr>
+                <tr><td><strong>Total Y1</strong></td><td><strong>2.516</strong></td><td><strong>93</strong></td><td><strong>3.7%</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Espaço de Trabalho HubSpot</div></div>
+          <div class="card-body">
+            <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">O BDR acessa o Espaço de Trabalho e segue a fila de atividades — não precisa decidir o que fazer, o sistema mostra.</div>
+            <div class="campo-list">
+              <div class="campo-item">Atividades do dia por prioridade</div>
+              <div class="campo-item">Negócios que precisam de ação</div>
+              <div class="campo-item">Sequências de prospecção em andamento</div>
+              <div class="campo-item">Leads aguardando resposta</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CADÊNCIAS -->
+  <div class="page" id="page-cadencias">
+    <div class="section-title">Cadências de Pré-Vendas</div>
+    <p class="section-sub">Atividades definidas por etapa do funil para Inbound e Outbound.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📨 Cadência Inbound</div></div>
+        <div class="card-body">
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">A TRABALHAR</div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dia 1: Higienização + Ligação 1 + WhatsApp 1</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">EM CADÊNCIA <span style="color:var(--muted);font-weight:400;">(6 contatos em 6 dias — sem resposta = Perdido)</span></div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dia 1: Ligação 1</div>
+            <div class="campo-item">Dia 2: Ligação 2 + WhatsApp 1</div>
+            <div class="campo-item">Dia 3: Ligação 3</div>
+            <div class="campo-item">Dia 4: Ligação 4 + WhatsApp 2</div>
+            <div class="campo-item">Dia 5: Ligação 5</div>
+            <div class="campo-item">Dia 6: Ligação 6 + WhatsApp 3 → Break</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">EM CONEXÃO</div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dias 1-4: WhatsApp diário para qualificação</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">REUNIÃO AGENDADA</div>
+          <div class="campo-list">
+            <div class="campo-item">Dia 1: WA confirmação · Dia 2: WA lembrete · Dia 3: WA confirmação final</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">📤 Cadência Outbound</div><span class="badge">Cavalo · Elefante · Baleia</span></div>
+        <div class="card-body">
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">ATIVAÇÃO (Dias 1-3)</div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dia 1: Pesquisa da conta + E-mail 1 personalizado via Apollo</div>
+            <div class="campo-item">Dia 3: Ligação 1 — cold call (30s de pitch + pergunta aberta)</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">APROFUNDAMENTO (Dias 5-7)</div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dia 5: E-mail 2 + LinkedIn (pedido de conexão)</div>
+            <div class="campo-item">Dia 7: Ligação 2 + WhatsApp 1 (se tiver número direto)</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px;">REENGAJAMENTO (Dias 10-12)</div>
+          <div class="campo-list" style="margin-bottom:14px;">
+            <div class="campo-item">Dia 10: E-mail 3 — novo ângulo (case ou dor diferente)</div>
+            <div class="campo-item">Dia 12: Ligação 3 + LinkedIn message</div>
+          </div>
+
+          <div style="font-size:12px;font-weight:600;color:var(--red);margin-bottom:8px;">BREAK (Dia 15)</div>
+          <div class="campo-list">
+            <div class="campo-item">E-mail 4 de break-up → Sem resposta = Perdido "Sem Resposta — Outbound"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTBOUND BDR -->
+  <div class="page" id="page-outbound">
+    <div class="section-title">Estratégia Outbound BDR</div>
+    <p class="section-sub">3 verticais · Cadência 10 dias úteis · Apollo como plataforma de extração e sequência.</p>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="vertical-card cpg">
+        <div style="font-size:24px;margin-bottom:8px;">🏭</div>
+        <div class="vertical-name">Indústria de Bens de Consumo</div>
+        <div class="vertical-sub">Consumer Packaged Goods e Manufatura</div>
+        <span class="vertical-tag">👤 Marketing</span>
+        <span class="vertical-tag">👤 Comercial</span>
+        <div style="margin-top:12px;display:flex;gap:16px;">
+          <div><div class="vertical-num">30</div><div style="font-size:11px;color:var(--muted);">Contas nomeadas</div></div>
+          <div><div class="vertical-num">15</div><div style="font-size:11px;color:var(--muted);">por BDR</div></div>
+        </div>
+      </div>
+      <div class="vertical-card fin">
+        <div style="font-size:24px;margin-bottom:8px;">🏦</div>
+        <div class="vertical-name">Financeiro & Seguros</div>
+        <div class="vertical-sub">Bancos, Fintechs, Seguradoras</div>
+        <span class="vertical-tag">👤 Comercial</span>
+        <div style="margin-top:12px;display:flex;gap:16px;">
+          <div><div class="vertical-num">30</div><div style="font-size:11px;color:var(--muted);">Contas nomeadas</div></div>
+          <div><div class="vertical-num">15</div><div style="font-size:11px;color:var(--muted);">por BDR</div></div>
+        </div>
+      </div>
+      <div class="vertical-card var">
+        <div style="font-size:24px;margin-bottom:8px;">🛍️</div>
+        <div class="vertical-name">Varejo & Franquias</div>
+        <div class="vertical-sub">Redes varejistas e franqueadoras</div>
+        <span class="vertical-tag">👤 Comercial</span>
+        <div style="margin-top:12px;display:flex;gap:16px;">
+          <div><div class="vertical-num">30</div><div style="font-size:11px;color:var(--muted);">Contas nomeadas</div></div>
+          <div><div class="vertical-num">15</div><div style="font-size:11px;color:var(--muted);">por BDR</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Cadência Padrão — 10 Dias Úteis</div></div>
+      <div class="card-body">
+        <div class="cad-step">
+          <div class="cad-dia"><div class="day">Dia 1</div><div class="icon">📧</div><div class="type">Email</div></div>
+          <div class="cad-dia"><div class="day">Dia 2</div><div class="icon">💼</div><div class="type">LinkedIn</div></div>
+          <div class="cad-dia"><div class="day">Dia 3</div><div class="icon">📱</div><div class="type">WhatsApp</div></div>
+          <div class="cad-dia"><div class="day">Dia 5</div><div class="icon">📧</div><div class="type">Email</div></div>
+          <div class="cad-dia"><div class="day">Dia 6</div><div class="icon">📞</div><div class="type">Ligação</div></div>
+          <div class="cad-dia"><div class="day">Dia 7</div><div class="icon">💼</div><div class="type">LinkedIn</div></div>
+          <div class="cad-dia"><div class="day">Dia 8</div><div class="icon">📱</div><div class="type">WhatsApp</div></div>
+          <div class="cad-dia"><div class="day">Dia 9</div><div class="icon">📧</div><div class="type">Email</div></div>
+          <div class="cad-dia"><div class="day">Dia 10</div><div class="icon">📞</div><div class="type">Ligação</div></div>
+        </div>
+        <div class="grid-4" style="margin-top:8px;margin-bottom:0;">
+          <div style="background:var(--cream);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--navy);">10</div><div style="font-size:11px;color:var(--muted);">Dias úteis</div></div>
+          <div style="background:var(--cream);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--navy);">4</div><div style="font-size:11px;color:var(--muted);">Canais</div></div>
+          <div style="background:var(--cream);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--navy);">3</div><div style="font-size:11px;color:var(--muted);">Versões (1/vertical)</div></div>
+          <div style="background:var(--cream);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:14px;font-weight:800;color:var(--navy);">Apollo</div><div style="font-size:11px;color:var(--muted);">Plataforma</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:20px;">Regras de Upload de Listas</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="campo-list">
+          <div class="campo-item">Regra 1 · Filtros mínimos: ≥501 funcionários | Segmento compatível | País: Brasil</div>
+          <div class="campo-item">Regra 2 · Sem duplicatas: verificar por domínio/CNPJ antes do upload. Mesclar, nunca criar novo.</div>
+          <div class="campo-item">Regra 3 · Campos obrigatórios: Nome da empresa, nº func., segmento, cargo, canal de origem (Outbound)</div>
+          <div class="campo-item">Regra 4 · Animal pré-classificado: classificar preliminarmente com base no porte</div>
+          <div class="campo-item">Regra 5 · Responsável definido: toda lista tem BDR dono atribuído. Lead sem dono não é trabalhado.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIME -->
+  <div class="page" id="page-time">
+    <div class="section-title">Time Comercial Applause</div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-body" style="display:flex;align-items:center;gap:16px;">
+        <div class="avatar" style="width:50px;height:50px;font-size:18px;">JP</div>
+        <div>
+          <div style="font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--navy);">João Pedro</div>
+          <div style="font-size:13px;color:var(--muted);">Head de Vendas · Lidera todo o time comercial</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="section-title" style="font-size:14px;">Account Executives (AEs)</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="team-card"><div class="avatar">RE</div><div><div class="team-name">Renan</div><div class="team-role">Account Executive · AE Rampado</div></div></div>
+          <div class="team-card"><div class="avatar">JO</div><div><div class="team-name">Jonathan</div><div class="team-role">Account Executive · AE Rampado</div></div></div>
+          <div class="team-card"><div class="avatar">ED</div><div><div class="team-name">Eduardo</div><div class="team-role">Account Executive</div></div></div>
+          <div class="team-card"><div class="avatar">YA</div><div><div class="team-name">Yana</div><div class="team-role">Account Executive</div></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title" style="font-size:14px;">Pré-Vendas (BDR / SDR)</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="team-card"><div class="avatar" style="background:#f59e0b;color:#fff;">CA</div><div><div class="team-name">Carol</div><div class="team-role">BDR · Outbound · Vertical: 3 verticais</div></div></div>
+          <div class="team-card"><div class="avatar" style="background:#f59e0b;color:#fff;">DI</div><div><div class="team-name">Diego</div><div class="team-role">BDR · Outbound</div></div></div>
+          <div class="team-card"><div class="avatar" style="background:#10b981;color:#fff;">LU</div><div><div class="team-name">Luciano</div><div class="team-role">SDR & LDR · Inbound + Qualificação</div></div></div>
+          <div class="team-card"><div class="avatar" style="background:#10b981;color:#fff;">RA</div><div><div class="team-name">Rafa</div><div class="team-role">SDR · Discovery e Qualificação</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METAS -->
+  <div class="page" id="page-metas">
+    <div class="section-title">Metas Mensais</div>
+    <p class="section-sub">Jul/26 → Jun/27. Documentos completos disponíveis nos links abaixo.</p>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <a href="https://docs.google.com/spreadsheets/d/1WTYAnzqkEaZUjBIq6T1Yi73VACx29H0m8JzV_XlLncA/edit" target="_blank" class="link-card">
+        <div class="link-icon yellow">📊</div>
+        <div><div class="link-title">Metas & Comissão · Pré-Vendas</div><div class="link-desc">BDR / SDR — Google Sheets</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1yYHu-_bOkm2ykys81YLmfs70VDF3ykJ3Qiw9qD7Tbz0/edit" target="_blank" class="link-card">
+        <div class="link-icon navy">📊</div>
+        <div style="color:var(--navy)"><div class="link-title">Metas & Comissão · Vendas</div><div class="link-desc">AEs — Google Sheets</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="section-title" style="font-size:14px;">Metas de Reuniões Qualificadas — Pré-Vendas</div>
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-body" style="padding:0;">
+        <table class="meta-table">
+          <thead>
+            <tr>
+              <th>Cargo / Perfil</th>
+              <th>Jul/26</th>
+              <th>Ago/26</th>
+              <th>Set/26</th>
+              <th>Out–Dez</th>
+              <th>Jan/27+</th>
+              <th>Total Anual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>BDR Rampada</td><td>12</td><td>12</td><td>12</td><td>15</td><td>15</td><td class="highlight">171</td></tr>
+            <tr><td>SDR Rampada</td><td>20</td><td>20</td><td>20</td><td>22</td><td>22</td><td class="highlight">258</td></tr>
+            <tr><td>BDR em Ramp</td><td>8</td><td>10</td><td>12</td><td>12</td><td>15</td><td class="highlight">159</td></tr>
+            <tr><td>SDR Júnior</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td class="highlight">96</td></tr>
+            <tr><td><strong>Total do Time</strong></td><td><strong>48</strong></td><td><strong>50</strong></td><td><strong>52</strong></td><td><strong>57</strong></td><td><strong>60</strong></td><td><strong>684</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size:14px;">Metas de MRR — Account Executives (R$ mil)</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="meta-table">
+          <thead>
+            <tr>
+              <th>Account Executive</th>
+              <th>Jul/26</th>
+              <th>Ago/26</th>
+              <th>Set/26</th>
+              <th>Out/26</th>
+              <th>Jan/27+</th>
+              <th>Total Anual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>AE 1 (Rampado)</td><td>25</td><td>30</td><td>30</td><td>30</td><td>35</td><td class="highlight">R$385k</td></tr>
+            <tr><td>AE 2 (Ramp 1 mês)</td><td>18</td><td>22</td><td>30</td><td>30</td><td>30</td><td class="highlight">R$349k</td></tr>
+            <tr><td>AE 3 (Entra Jul/26)</td><td>0</td><td>12</td><td>22</td><td>28</td><td>30</td><td class="highlight">R$314k</td></tr>
+            <tr><td>AE 4 (Entra Ago/26)</td><td>—</td><td>0</td><td>15</td><td>15</td><td>30</td><td class="highlight">R$236k</td></tr>
+            <tr><td><strong>Total do Time</strong></td><td><strong>43k</strong></td><td><strong>64k</strong></td><td><strong>82k</strong></td><td><strong>103k</strong></td><td><strong>134k</strong></td><td><strong>R$1.28M</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMISSÕES -->
+  <div class="page" id="page-comissoes">
+    <div class="section-title">Comissões</div>
+    <p class="section-sub">Planilhas completas com regras de remuneração por perfil. Acesso restrito — apenas quem precisa tem permissão.</p>
+
+    <div class="card" style="margin-bottom:20px;border-color:#fecaca;">
+      <div class="card-body" style="display:flex;align-items:center;gap:12px;">
+        <div style="font-size:24px;">🔒</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px;">Acesso Restrito</div>
+          <div style="font-size:12px;color:var(--muted);">As planilhas de comissão são privadas. Solicite acesso ao Head de Vendas (João Pedro) caso ainda não tenha.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <a href="https://docs.google.com/spreadsheets/d/1WTYAnzqkEaZUjBIq6T1Yi73VACx29H0m8JzV_XlLncA/edit" target="_blank" class="link-card">
+        <div class="link-icon yellow">💰</div>
+        <div><div class="link-title">Planilha Comissão · Pré-Vendas</div><div class="link-desc">BDR / SDR · Google Sheets <span class="private-badge">🔒 Privado</span></div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1yYHu-_bOkm2ykys81YLmfs70VDF3ykJ3Qiw9qD7Tbz0/edit" target="_blank" class="link-card">
+        <div class="link-icon navy">💰</div>
+        <div style="color:var(--navy)"><div class="link-title">Planilha Comissão · Vendas</div><div class="link-desc">AEs · Google Sheets <span class="private-badge">🔒 Privado</span></div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="section-title" style="margin-top:24px;">Como funciona — Pré-Vendas</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="campo-list">
+          <div class="campo-item">Remuneração por reunião qualificada realizada (não agendada)</div>
+          <div class="campo-item">Meta mensal escalonada conforme ramp: BDR inicia em 8-12 RQs/mês</div>
+          <div class="campo-item">SDR Rampada: meta de 20-22 RQs/mês</div>
+          <div class="campo-item">Bônus adicional para atingimento de metas do time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:16px;">Como funciona — Account Executives</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="campo-list">
+          <div class="campo-item">Remuneração por MRR fechado mensalmente</div>
+          <div class="campo-item">Meta escalonada durante ramp (3-4 meses)</div>
+          <div class="campo-item">Meta cheia a partir do 4º mês: R$30k-35k MRR/mês</div>
+          <div class="campo-item">Detalhes de acelerador e kicker na planilha privada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALLS -->
+  <div class="page" id="page-calls">
+    <div class="section-title">Calls de Referência</div>
+    <p class="section-sub">Gravações de calls reais para estudo e treinamento. Use para se preparar para cada tipo de situação.</p>
+
+    <div class="grid-2">
+      <a href="https://app.meetrox.ai/shared-calls/9Mz8b0vgq_QnuvkJ0WRPGQ" target="_blank" class="link-card">
+        <div class="link-icon purple">🎙️</div>
+        <div><div class="link-title">Call de Referência #1</div><div class="link-desc">Meetrox · Pre-Sales / Qualificação</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://app.meetrox.ai/shared-calls/Ppz8yIuXovtPSDSkLjCwNw" target="_blank" class="link-card">
+        <div class="link-icon purple">🎙️</div>
+        <div><div class="link-title">Call de Referência #2</div><div class="link-desc">Meetrox · Demo / Apresentação</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://app.meetrox.ai/shared-calls/_Dk1f_FiyNJyK2PSnfuyeQ" target="_blank" class="link-card">
+        <div class="link-icon purple">🎙️</div>
+        <div><div class="link-title">Call de Referência #3</div><div class="link-desc">Meetrox · Negociação / Proposta</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://app.meetrox.ai/shared-calls/jqZ9Nn9TP3U4IXp6yGZ8ig" target="_blank" class="link-card">
+        <div class="link-icon purple">🎙️</div>
+        <div><div class="link-title">Call de Referência #4</div><div class="link-desc">Meetrox · Fechamento</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="section-title" style="margin-top:24px;">Como usar as calls</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="campo-list">
+          <div class="campo-item">Assista antes da sua primeira call de cada tipo (pré-sales, demo, proposta, fechamento)</div>
+          <div class="campo-item">Preste atenção em como o AE/BDR abre a conversa e estabelece rapport</div>
+          <div class="campo-item">Observe como as perguntas de qualificação são feitas de forma natural</div>
+          <div class="campo-item">Anote as objeções mais comuns e como foram tratadas</div>
+          <div class="campo-item">Compartilhe suas próprias calls com o time via Meetrox para feedback</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUBSPOT -->
+  <div class="page" id="page-hubspot">
+    <div class="section-title">HubSpot · Painéis e Dashboards</div>
+    <p class="section-sub">Acesse os painéis de metas e acompanhe o pipeline em tempo real.</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+      <a href="https://app.hubspot.com/reports-dashboard/41664909/view/12513171" target="_blank" class="link-card">
+        <div class="link-icon orange">📊</div>
+        <div><div class="link-title">Painel de Metas · Pré-Vendas</div><div class="link-desc">BDR / SDR — Reuniões qualificadas e performance</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://app.hubspot.com/reports-dashboard/41664909/view/18343815" target="_blank" class="link-card">
+        <div class="link-icon navy">📊</div>
+        <div style="color:var(--navy)"><div class="link-title">Painel de Metas · Vendas</div><div class="link-desc">AEs — Pipeline, MRR fechado e forecast</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a href="https://app.hubspot.com/reports-dashboard/41664909/view/18112741" target="_blank" class="link-card">
+        <div class="link-icon green">🏆</div>
+        <div><div class="link-title">Painel Geral</div><div class="link-desc">Visão completa do funil comercial</div></div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="section-title" style="font-size:14px;">Regras de higiene do CRM</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="campo-list">
+          <div class="campo-item">Todo lead deve ter nome, telefone, email, empresa, cargo e nº de funcionários preenchidos</div>
+          <div class="campo-item">Deal Owner é sempre o AE responsável — BDR apenas agenda e passa</div>
+          <div class="campo-item">Reuniões nunca são deletadas — reagendamentos criam nova entrada com a antiga marcada como "Reagendada"</div>
+          <div class="campo-item">Campos obrigatórios por etapa devem estar preenchidos para avançar no pipeline</div>
+          <div class="campo-item">Motivo de perda sempre preenchido ao mover para Perdido</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING -->
+  <div class="page" id="page-onboarding">
+    <div class="section-title">Onboarding de Novos Membros</div>
+    <p class="section-sub">Roteiro para integração de novas pessoas no time comercial Applause. Siga a sequência para acelerar o ramp.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📚 Semana 1 — Produto & Contexto</div></div>
+        <div class="card-body" style="padding:0 20px;">
+          <div class="onboard-step">
+            <div class="onboard-num">1</div>
+            <div><div class="onboard-title">Entender o posicionamento</div><div class="onboard-desc">Ler o GTM 2026 e o Growth Plan. Decorar a frase central e o arquétipo de marca.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">2</div>
+            <div><div class="onboard-title">Os 4 animais de cabeça</div><div class="onboard-desc">Saber diferenciar Baleia, Elefante, Cavalo e Cavalo Marinho por porte, MRR e ciclo.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">3</div>
+            <div><div class="onboard-title">Testar a plataforma</div><div class="onboard-desc">Criar conta demo e explorar missões, metas, feed, marketplace e aprovação por IA.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">4</div>
+            <div><div class="onboard-title">Assistir as calls de referência</div><div class="onboard-desc">Ver pelo menos 2 das 4 calls disponíveis no playbook.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">🔧 Semana 2 — Processo & Ferramentas</div></div>
+        <div class="card-body" style="padding:0 20px;">
+          <div class="onboard-step">
+            <div class="onboard-num">5</div>
+            <div><div class="onboard-title">Dominar a qualificação</div><div class="onboard-desc">Ler os 4 critérios, os 11 campos e as regras por animal. Fazer roleplay com o Head.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">6</div>
+            <div><div class="onboard-title">HubSpot operacional</div><div class="onboard-desc">Configurar Espaço de Trabalho, entender as etapas do funil e os campos obrigatórios.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">7</div>
+            <div><div class="onboard-title">Cadências na prática</div><div class="onboard-desc">Para BDRs: configurar Apollo e executar a cadência de Outbound. Para AEs: entender o handoff.</div></div>
+          </div>
+          <div class="onboard-step">
+            <div class="onboard-num">8</div>
+            <div><div class="onboard-title">Entender metas e comissões</div><div class="onboard-desc">Revisar a planilha de metas e comissão com o Head de Vendas.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:20px;">Links essenciais para o primeiro dia</div>
+    <div class="grid-2">
+      <div class="link-card" onclick="showPage('produto')">
+        <div class="link-icon yellow">📦</div>
+        <div><div class="link-title">O Produto Applause</div><div class="link-desc">Posicionamento, categorias e roadmap</div></div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-card" onclick="showPage('icp')">
+        <div class="link-icon navy">🎯</div>
+        <div style="color:var(--navy)"><div class="link-title">ICP & Os 4 Animais</div><div class="link-desc">Para quem vendemos</div></div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-card" onclick="showPage('qualificacao')">
+        <div class="link-icon green">✅</div>
+        <div><div class="link-title">Qualificação de Leads</div><div class="link-desc">4 critérios + 11 campos</div></div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-card" onclick="showPage('calls')">
+        <div class="link-icon purple">🎙️</div>
+        <div><div class="link-title">Calls de Referência</div><div class="link-desc">Assistir antes da primeira call</div></div>
+        <div class="link-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- AI PANEL -->
+<div class="ai-panel" id="ai-panel">
+  <div class="ai-header">
+    <div class="ai-title">✨ Assistente do Playbook</div>
+    <button class="ai-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="ai-messages" id="ai-messages">
+    <div class="ai-msg bot">Olá! Sou o assistente do Playbook Applause. Posso responder qualquer dúvida sobre produto, ICP, qualificação, processo de vendas, metas ou cadências. O que você precisa?</div>
+  </div>
+  <div class="ai-suggestions">
+    <div class="ai-suggestion" onclick="askAI('Como qualificar uma Baleia?')">Como qualificar uma Baleia?</div>
+    <div class="ai-suggestion" onclick="askAI('Quais são as etapas do funil?')">Etapas do funil</div>
+    <div class="ai-suggestion" onclick="askAI('Qual a cadência de outbound?')">Cadência outbound</div>
+    <div class="ai-suggestion" onclick="askAI('Quais são as dores que resolvemos?')">Dores que resolvemos</div>
+    <div class="ai-suggestion" onclick="askAI('Quando um lead vira Rato?')">Quando é Rato?</div>
+    <div class="ai-suggestion" onclick="askAI('Como funciona a comissão dos AEs?')">Comissão AEs</div>
+  </div>
+  <div class="ai-input-area">
+    <input class="ai-input" id="ai-input" placeholder="Pergunte sobre o playbook..." onkeydown="if(event.key==='Enter') sendAI()">
+    <button class="ai-send" onclick="sendAI()">➤</button>
+  </div>
+</div>
+
+<script>
+const PLAYBOOK_CONTEXT = `
+Você é o assistente do Playbook de Vendas da Applause. Responda apenas com base nessas informações:
+
+EMPRESA: Applause — plataforma de performance para canais de venda. Incentiva comportamentos, comunica, engaja e alavanca resultados.
+POSICIONAMENTO: "A Applause é a ponte entre comportamento e resultado — do incentivo ao reconhecimento."
+META 2026: R$10M novo ARR. ARR atual: R$5.6M. Meta Jul/26 a Jun/27: R$15M ARR acumulado.
+
+OS 4 ANIMAIS (segmentação):
+- Baleia (KA): 5.001+ func | 4.001+ incentivados | MRR R$25k | Ciclo ~6 meses | ABM + Eventos | Analista+ aceito com plano escalada
+- Elefante (Enterprise-2): 2.001–5.000 func | 1.001–4.000 incentivados | MRR R$12.5k | Ciclo ~5 meses | Outbound + Inbound | Analista+ com escalada
+- Cavalo (Enterprise-1): 501–2.000 func | 251–1.000 incentivados | MRR R$6.7k | Ciclo ~3 meses | Outbound + Inbound | Coord/Gerente mínimo
+- Cavalo Marinho (SMB): 51–500 func | 51–250 incentivados | MRR R$3.5k | Ciclo ~1 mês | Inbound | Decisor direto
+- Rato (VSB): <51 func → NÃO VENDER. Mover para Perdido imediatamente.
+
+SEGMENTOS: Indústria de Bens de Consumo, Varejo e Franquias, Times Comerciais, Financeiro e Seguros.
+
+QUALIFICAÇÃO — 4 critérios (lógica AND):
+C1 Dor/Implicação: lead tem dor + verbalizou impacto nos resultados
+C2 Pré-Req. Operação: tem estrutura ou disposição para campanhas de incentivo
+C3 Pré-Req. Financeiro: budget disponível ou gasto histórico na categoria
+C4 Fit de Perfil: porte mínimo + acesso ao decisor
+Para Baleia e Elefante: C3 é subentendido. Para Cavalo e Marinho: C3 é OBRIGATÓRIO.
+Cavalo Marinho: 2 custos separados — mensalidade Applause E verba de incentivo. Ambos devem ser confirmados.
+
+11 CAMPOS: Hipótese de Dor, Status da Implicação, Cultura de Incentivo, Práticas de Reconhecimento, Processo de incentivo hoje, Escopo de Utilização, Possui plataforma, Budget, Nº Funcionários, Potencial Incentivados, Cargo Atual.
+
+FUNIL HUBSPOT (8 etapas):
+1. A Trabalhar — valida porte, se <51 → Perdido
+2. Em Cadência — tentativa de contato ativo
+3. Em Conexão — lead respondeu, qualificação em andamento
+4. Reunião Agendada — passou pelos 4 critérios, campos preenchidos, briefing feito
+5. Apresentação Feita — AE conduz reunião
+6. Proposta Enviada — decisor identificado + valor alinhado
+7. Negociação — objeções e critérios de decisão mapeados
+8. Em Fechamento — contrato assinado
+
+CADÊNCIA INBOUND: A Trabalhar (higienização + ligação + WA). Em Cadência: 6 contatos em 6 dias, sem resposta = Perdido. Em Conexão: WhatsApp diário. Reunião Agendada: 3 WA de confirmação.
+
+CADÊNCIA OUTBOUND (15 dias): Dia 1 pesquisa + email, Dia 3 ligação, Dia 5 email2 + LinkedIn, Dia 7 ligação2 + WA, Dia 10 email3, Dia 12 ligação3 + LinkedIn, Dia 15 break-up email.
+
+OUTBOUND BDR: 3 verticais — Indústria CPG, Financeiro/Seguros, Varejo/Franquias. 30 contas nomeadas por vertical (15 por BDR). Plataforma: Apollo. Cadência 10 dias úteis, 4 canais.
+
+TIME: João Pedro (Head de Vendas), AEs: Renan, Jonathan, Eduardo, Yana. Pré-Vendas: Carol (BDR), Diego (BDR), Luciano (SDR/LDR), Rafa (SDR).
+
+METAS PRÉ-VENDAS: BDR Rampada 171 RQ/ano, SDR Rampada 258 RQ/ano, BDR em Ramp 159 RQ/ano, SDR Júnior 96 RQ/ano. Total time: 684 RQ/ano.
+
+METAS AEs: AE1 R$385k/ano, AE2 R$349k/ano, AE3 R$314k/ano, AE4 R$236k/ano. Total: R$1.28M/ano.
+
+CONCORRENTES: Planilhas+WhatsApp, Incentive-me/Gamific/Incentivale, BI+Plataforma de Premiação, Flash/Caju/Swile.
+
+DORES RECORRENTES: não gera comportamento na ponta, equipes difíceis de engajar, baixa visibilidade do canal, gestão via WhatsApp e planilhas, campanhas pontuais sem efeito contínuo, premiação para poucas pessoas, comunicação fragmentada, gestão manual de brindes.
+
+Responda em português, de forma direta e útil. Máximo 200 palavras por resposta.
+`;
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+
+  const titles = {
+    home: 'Início', produto: 'O Produto', icp: 'ICP & Animais',
+    qualificacao: 'Qualificação', funil: 'Funil HubSpot', cadencias: 'Cadências',
+    outbound: 'Outbound BDR', time: 'Time', metas: 'Metas',
+    comissoes: 'Comissões', calls: 'Calls de Referência', hubspot: 'HubSpot',
+    onboarding: 'Onboarding'
+  };
+
+  document.getElementById('topbar-title').textContent = titles[id] || id;
+
+  document.querySelectorAll('.nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + id + "'")) {
+      n.classList.add('active');
+    }
+  });
+}
+
+function toggleAI() {
+  document.getElementById('ai-panel').classList.toggle('open');
+}
+
+async function askAI(question) {
+  document.getElementById('ai-input').value = question;
+  await sendAI();
+}
+
+async function sendAI() {
+  const input = document.getElementById('ai-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  input.value = '';
+
+  const messages = document.getElementById('ai-messages');
+  messages.innerHTML += `<div class="ai-msg user">${msg}</div>`;
+
+  const loadingEl = document.createElement('div');
+  loadingEl.className = 'ai-msg bot loading';
+  loadingEl.textContent = 'Consultando o playbook...';
+  messages.appendChild(loadingEl);
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: PLAYBOOK_CONTEXT,
+        messages: [{ role: 'user', content: msg }]
+      })
+    });
+
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'Não consegui gerar uma resposta. Tente novamente.';
+
+    loadingEl.className = 'ai-msg bot';
+    loadingEl.textContent = reply;
+  } catch (err) {
+    loadingEl.className = 'ai-msg bot';
+    loadingEl.textContent = 'Erro ao conectar. Verifique sua conexão e tente novamente.';
+  }
+
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
+</body>
+</html>
