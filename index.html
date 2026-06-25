@@ -723,6 +723,160 @@
     .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
     .grid-2 { grid-template-columns: 1fr; }
   }
+
+  /* ── PERSONAS & SPIN ── */
+  .p-tab-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .p-tab-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s;
+    border-radius: 6px 6px 0 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .p-tab-btn:hover { color: var(--navy); }
+  .p-tab-btn.active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+  .p-tab-content { display: none; }
+  .p-tab-content.active { display: block; }
+  .p-vert-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .p-vert-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--muted);
+    transition: all 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .p-vert-btn.active-cpg { background: #fffbeb; border-color: #fde68a; color: #92400e; font-weight: 600; }
+  .p-vert-btn.active-fin { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; font-weight: 600; }
+  .p-vert-btn.active-var { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; font-weight: 600; }
+  .p-vert-content { display: none; }
+  .p-vert-content.active { display: block; }
+  .spin-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  .tag-s { background: #eef2ff; color: #6366f1; }
+  .tag-p { background: #fffbeb; color: #92400e; }
+  .tag-i { background: #fef2f2; color: #ef4444; }
+  .tag-n { background: #ecfdf5; color: #065f46; }
+  .q-block {
+    padding: 11px 14px;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .q-s { background: #eef2ff; border-left: 3px solid #6366f1; }
+  .q-p { background: #fffbeb; border-left: 3px solid #f59e0b; }
+  .q-i { background: #fef2f2; border-left: 3px solid #ef4444; }
+  .q-n { background: #ecfdf5; border-left: 3px solid #10b981; }
+  .q-tip { font-size: 11px; color: #64748b; margin-top: 4px; font-style: italic; }
+  .dict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .dict-item { border-radius: 8px; padding: 10px 12px; border: 1px solid; }
+  .dict-term { font-size: 12px; font-weight: 600; margin-bottom: 3px; font-family: 'Poppins', sans-serif; }
+  .dict-def { font-size: 11px; color: #64748b; line-height: 1.5; }
+  .dict-cpg .dict-item { background: #fffbeb; border-color: #fde68a; }
+  .dict-cpg .dict-term { color: #92400e; }
+  .dict-fin .dict-item { background: #eff6ff; border-color: #bfdbfe; }
+  .dict-fin .dict-term { color: #1e40af; }
+  .dict-var .dict-item { background: #ecfdf5; border-color: #a7f3d0; }
+  .dict-var .dict-term { color: #065f46; }
+  .urgency-box-p {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+  }
+  .urgency-title-p {
+    font-size: 11px;
+    font-weight: 600;
+    color: #dc2626;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .urgency-item-p {
+    font-size: 12px;
+    color: #7f1d1d;
+    padding: 5px 0;
+    border-bottom: 1px solid #fecaca;
+    display: flex;
+    gap: 8px;
+  }
+  .urgency-item-p:last-child { border-bottom: none; padding-bottom: 0; }
+  .spin-legend-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .spin-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .spin-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .p-persona-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 2px;
+  }
+  .pill-cpg { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .pill-fin { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .pill-var { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .badge-out { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .badge-both { background: #f3e8ff; color: #6b21a8; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .p-vert-header { border-left: 4px solid; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 16px; }
+  .p-vert-header.cpg { border-color: #f59e0b; background: #fffbeb; }
+  .p-vert-header.fin { border-color: #3b82f6; background: #eff6ff; }
+  .p-vert-header.var { border-color: #10b981; background: #ecfdf5; }
+  .case-row { padding: 12px 0; border-bottom: 1px solid #f2f4f7; display: flex; gap: 12px; align-items: flex-start; }
+  .case-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-logo { width: 34px; height: 34px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; font-family: 'Poppins', sans-serif; }
 </style>
 </head>
 <body>
@@ -747,6 +901,7 @@
     <div class="nav-item" onclick="showPage('funil')"><span class="icon">🔽</span> Funil HubSpot</div>
     <div class="nav-item" onclick="showPage('cadencias')"><span class="icon">📞</span> Cadências</div>
     <div class="nav-item" onclick="showPage('outbound')"><span class="icon">🚀</span> Outbound BDR</div>
+    <div class="nav-item" onclick="showPage('personas')"><span class="icon">🎭</span> Personas & SPIN</div>
   </div>
 
   <div class="sidebar-section">
@@ -1791,6 +1946,23 @@ DORES RECORRENTES: não gera comportamento na ponta, equipes difíceis de engaja
 Responda em português, de forma direta e útil. Máximo 200 palavras por resposta.
 `;
 
+function showVertical(id) {
+  document.querySelectorAll(".p-vert-content").forEach(c => c.classList.remove("active"));
+  document.querySelectorAll(".p-vert-btn").forEach(b => { b.classList.remove("active-cpg","active-fin","active-var"); });
+  document.getElementById("vert-" + id).classList.add("active");
+  const btn = [...document.querySelectorAll(".p-vert-btn")].find(b => b.getAttribute("onclick")?.includes("'" + id + '"));
+  if (btn) btn.classList.add("active-" + id);
+}
+
+function showPTab(vertical, tab) {
+  document.querySelectorAll("#vert-" + vertical + " .p-tab-content").forEach(c => c.classList.remove("active"));
+  document.querySelectorAll("#vert-" + vertical + " .p-tab-btn").forEach(b => b.classList.remove("active"));
+  const el = document.getElementById("ptab-" + vertical + "-" + tab);
+  if (el) el.classList.add("active");
+  const btn = [...document.querySelectorAll("#vert-" + vertical + " .p-tab-btn")].find(b => b.getAttribute("onclick")?.includes("'" + tab + '"));
+  if (btn) btn.classList.add("active");
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -1863,5 +2035,346 @@ async function sendAI() {
   messages.scrollTop = messages.scrollHeight;
 }
 </script>
+<!-- ══════════════════════════════════════════════ -->
+<!-- PERSONAS & SPIN                                -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="page" id="page-personas">
+  <div class="page-title">Personas & SPIN por Vertical</div>
+  <p class="page-sub">Guia de abordagem para pré-vendas e AEs: quem são as personas, como qualificar e como gerar urgência — especialmente em leads frios de outbound.</p>
+
+  <!-- SPIN LEGEND -->
+  <div class="spin-legend-row">
+    <div class="spin-legend-item"><div class="spin-dot" style="background:#6366f1"></div> S — Situação</div>
+    <div class="spin-legend-item"><div class="spin-dot" style="background:#f59e0b"></div> P — Problema</div>
+    <div class="spin-legend-item"><div class="spin-dot" style="background:#ef4444"></div> I — Implicação (gera urgência)</div>
+    <div class="spin-legend-item"><div class="spin-dot" style="background:#10b981"></div> N — Necessidade de Solução</div>
+  </div>
+
+  <!-- INBOUND VS OUTBOUND -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-header"><span>🎯</span> Inbound vs. Outbound — o que muda na abordagem</div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div style="background:#eff6ff;border-radius:8px;padding:14px;font-size:13px;">
+          <div style="font-size:11px;font-weight:600;color:#1e40af;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">🔵 Inbound</div>
+          O lead chegou com dor latente. O SPIN serve para <strong>revelar e amplificar</strong> o que ele já sente. Urgência normalmente já existe — seu papel é validar e calibrar.
+        </div>
+        <div style="background:#fef2f2;border-radius:8px;padding:14px;font-size:13px;">
+          <div style="font-size:11px;font-weight:600;color:#991b1b;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">🔴 Outbound</div>
+          O lead não pediu sua ligação. Urgência <strong>não existe ainda</strong> — você constrói ela via Implicação (I). S e P mais curtos, foco máximo no I para criar consciência do custo do problema.
+        </div>
+      </div>
+      <div style="background:#f8fafc;border-radius:8px;padding:12px;font-size:13px;color:#1e2543;border-left:3px solid #1e2543;">
+        <strong>Abertura de cold call (30 segundos):</strong> "Oi [Nome], aqui é o [nome] da Applause. Tenho 30 segundos? A gente trabalha com [CPG / seguradoras / franquias] ajudando gestores comerciais a engajar canais de venda. Falo com muitos gerentes que me dizem que <strong>[dor da vertical]</strong> — isso é algo que vocês enfrentam?"
+      </div>
+    </div>
+  </div>
+
+  <!-- VERTICAL SELECTOR -->
+  <div class="p-vert-nav">
+    <button class="p-vert-btn active-cpg" onclick="showVertical('cpg')">🏭 Bens de Consumo</button>
+    <button class="p-vert-btn" onclick="showVertical('fin')">🏦 Financeiro & Seguros</button>
+    <button class="p-vert-btn" onclick="showVertical('var')">🛍️ Varejo & Franquias</button>
+  </div>
+
+  <!-- ══ CPG ══ -->
+  <div class="p-vert-content active" id="vert-cpg">
+    <!-- DICIONÁRIO CPG -->
+    <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#92400e;margin-bottom:8px;">📖 Vocabulário — fale a língua deles</div>
+    <div class="dict-grid dict-cpg">
+      <div class="dict-item"><div class="dict-term">Sell-in</div><div class="dict-def">Venda da indústria para o distribuidor. É o volume que entra no canal — não garante que chegue ao consumidor.</div></div>
+      <div class="dict-item"><div class="dict-term">Sell-out</div><div class="dict-def">Venda do canal ao consumidor final. A métrica que valida a saúde real do canal — o que sai da prateleira.</div></div>
+      <div class="dict-item"><div class="dict-term">Ruptura</div><div class="dict-def">Produto em falta na gôndola. Alta ruptura = sell-out baixo mesmo com sell-in alto. Custo invisível e frequente.</div></div>
+      <div class="dict-item"><div class="dict-term">Share of shelf</div><div class="dict-def">Espaço do produto na gôndola. Mais espaço = mais visibilidade = mais sell-out. Disputado com concorrentes.</div></div>
+      <div class="dict-item"><div class="dict-term">SKU</div><div class="dict-def">Cada variação de produto (tamanho, sabor, embalagem). "Trabalhar o mix" = vender além dos SKUs campeões.</div></div>
+      <div class="dict-item"><div class="dict-term">Verba de trade</div><div class="dict-def">Budget da indústria para ações no PDV e incentivo de canal. Frequentemente mal rastreado — Applause dá resultado a esse dinheiro.</div></div>
+      <div class="dict-item"><div class="dict-term">PDV</div><div class="dict-def">Ponto de venda. Execução no PDV = garantir presença, preço e exposição corretos.</div></div>
+      <div class="dict-item"><div class="dict-term">RCA</div><div class="dict-def">Representante Comercial Autônomo. Vende por comissão, trabalha para múltiplas indústrias — difícil de priorizar sua marca.</div></div>
+    </div>
+
+    <!-- TABS PERSONAS CPG -->
+    <div class="p-tab-nav">
+      <button class="p-tab-btn active" onclick="showPTab('cpg','comercial')">Ger./Dir. Comercial</button>
+      <button class="p-tab-btn" onclick="showPTab('cpg','trade')">Trade Marketing</button>
+      <button class="p-tab-btn" onclick="showPTab('cpg','distribuidor')">Ger. de Distribuidor</button>
+      <button class="p-tab-btn" onclick="showPTab('cpg','cases-cpg')">Cases</button>
+    </div>
+
+    <!-- COMERCIAL CPG -->
+    <div class="p-tab-content active" id="ptab-cpg-comercial">
+      <div class="card">
+        <div class="card-header">
+          <span>👤</span>
+          <div style="flex:1"><strong>Gerente / Diretor Comercial</strong> <span style="font-size:11px;color:#64748b;margin-left:6px;">Decisor de budget · Responsável pela meta de sell-out</span></div>
+          <span class="badge-out">Outbound</span>
+        </div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#929c9a;margin-bottom:6px;">Cargos comuns</div>
+              <div><span class="p-persona-pill pill-cpg">Gerente Comercial</span><span class="p-persona-pill pill-cpg">Diretor de Vendas</span><span class="p-persona-pill pill-cpg">Head de Canal</span><span class="p-persona-pill pill-cpg">Ger. de Key Account</span><span class="p-persona-pill pill-cpg">VP Comercial</span></div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#929c9a;margin-bottom:6px;">Contexto</div>
+              <div style="font-size:13px;color:#64748b;">Pressão de quota trimestral. Lida com distribuidores difíceis de alinhar. Quer previsibilidade de canal e visibilidade de sell-out em tempo real.</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #f2f4f7;padding-top:14px;">
+            <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#929c9a;margin-bottom:10px;">Perguntas SPIN</div>
+            <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Como está o canal de vocês — venda direta ao varejo, via distribuidores, ou os dois?<div class="q-tip">Entenda o porte: quantos distribuidores/RCAs, e se gerenciam sell-out diretamente ou só sell-in.</div></div></div>
+            <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Vocês têm algum programa de incentivo para esse canal — além da tabela de sell-in e margens?</div></div>
+            <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Quando vocês lançam uma campanha de sell-out, o engajamento é consistente entre os distribuidores ou sempre tem uns que ficam para trás?<div class="q-tip">Hipótese: "Ouço muito que o sell-in acontece mas o sell-out trava porque o vendedor na ponta não está engajado."</div></div></div>
+            <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como vocês comunicam as campanhas pro canal? A mensagem chega ao vendedor no balcão do distribuidor — ou fica no gestor?</div></div>
+            <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quando um distribuidor não engaja na campanha de sell-out, qual é o impacto direto na sua meta de volume do trimestre?<div class="q-tip">🔥 Faça ele quantificar: "Se esse distribuidor representa X% do canal e está 20% abaixo, o que isso significa em caixas ou reais?"</div></div></div>
+            <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Vocês conseguem saber em tempo real quais distribuidores estão no ritmo do sell-out e quais estão acumulando estoque parado?<div class="q-tip">Estoque parado = ruptura de caixa pro distribuidor e risco de ruptura de gôndola. Decisão tardia = meta perdida.</div></div></div>
+            <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Se os distribuidores bottom 30% melhorassem o sell-out em 10%, que impacto isso teria no resultado total do trimestre?</div></div>
+            <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se vocês tivessem como comunicar campanhas de sell-out, acompanhar o ritmo de cada distribuidor em tempo real e premiar quem performa — tudo sem depender de WhatsApp e planilha — como isso mudaria a relação de vocês com o canal?</div></div>
+          </div>
+          <div class="urgency-box-p">
+            <div class="urgency-title-p">⚡ Gatilhos de urgência</div>
+            <div class="urgency-item-p">📅 <span><strong>Sazonalidade próxima</strong> — Natal, Páscoa, volta às aulas. "A implantação leva 4 semanas — se quiser usar na próxima campanha, precisamos começar agora."</span></div>
+            <div class="urgency-item-p">📉 <span><strong>Meta de sell-out em risco</strong> — "Quanto falta para a meta do trimestre? O canal está no ritmo?"</span></div>
+            <div class="urgency-item-p">🏁 <span><strong>Concorrente com plataforma</strong> — "Você sabe se [concorrente] já tem programa estruturado com os mesmos distribuidores que vocês?"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRADE MARKETING CPG -->
+    <div class="p-tab-content" id="ptab-cpg-trade">
+      <div class="card">
+        <div class="card-header">
+          <span>🎯</span>
+          <div style="flex:1"><strong>Trade Marketing</strong> <span style="font-size:11px;color:#64748b;margin-left:6px;">Influenciador — executa campanhas, raramente decide o budget</span></div>
+          <span class="badge-both">Inbound + Outbound</span>
+        </div>
+        <div class="card-body">
+          <div style="background:#fffbeb;border-radius:8px;padding:12px;font-size:12px;color:#92400e;margin-bottom:14px;border:1px solid #fde68a;">
+            💡 <strong>Como lidar:</strong> não é o decisor de budget — mas vai usar e defender a ferramenta internamente. Engaje bem aqui: ele vira seu champion e abre porta para o Comercial. Após qualificar, peça para agendar uma conversa com o Gerente Comercial: "Faz sentido mostrar isso para quem define o budget de trade junto com você?"
+          </div>
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-cpg">Analista de Trade</span><span class="p-persona-pill pill-cpg">Coordenador de Trade</span><span class="p-persona-pill pill-cpg">Gerente de Trade</span><span class="p-persona-pill pill-cpg">Analista de PDV</span><span class="p-persona-pill pill-cpg">Ger. de Merchandising</span></div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Como vocês organizam e comunicam as campanhas de sell-out e ativação de PDV hoje?</div></div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>A execução no PDV é monitorada? Como acompanham se o share of shelf e a presença de SKU estão corretos?</div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Quando lançam uma ação de PDV, você consegue saber quantos promotores realmente executaram no prazo — ou descobre a ruptura só quando o sell-out cai?<div class="q-tip">60-70% dos promotores não executam como planejado. A indústria descobre pelo dado atrasado de sell-out.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quando a execução no PDV é inconsistente — share of shelf errado, SKU faltando — como isso aparece nos números de sell-out do mês?<div class="q-tip">🔥 Liga execução a resultado financeiro. Ajude-o a quantificar esse custo.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quanto tempo da sua semana vai para coordenar execução, cobrar evidências de PDV e fechar relatório de campanha? É tempo que poderia ir para planejamento.</div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se você tivesse visibilidade em tempo real da execução no PDV e premiação automática sobre a verba de trade — o que você conseguiria fazer com o tempo e energia que sobram?</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISTRIBUIDOR CPG -->
+    <div class="p-tab-content" id="ptab-cpg-distribuidor">
+      <div class="card">
+        <div class="card-header">
+          <span>🚚</span>
+          <div style="flex:1"><strong>Gerente de Distribuidor / Atacadista</strong> <span style="font-size:11px;color:#64748b;margin-left:6px;">O próprio distribuidor como cliente</span></div>
+          <span class="badge-out">Outbound</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-cpg">Diretor Comercial</span><span class="p-persona-pill pill-cpg">Gerente de Vendas</span><span class="p-persona-pill pill-cpg">Dono / Sócio</span><span class="p-persona-pill pill-cpg">Gerente de RV</span></div>
+          <div style="font-size:13px;color:#64748b;margin-bottom:14px;">Tem equipe de RCAs difíceis de engajar. Budget apertado, mas entendem ROI de incentivo porque já recebem verba de trade da indústria. Metas de volume com a indústria criam urgência natural.</div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Quantos vendedores ou representantes têm na equipe de vendas?</div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Vocês têm algum programa de incentivo para o time além da comissão padrão?<div class="q-tip">Hipótese: "Ouço muito que o time foca nos SKUs mais fáceis e esquece o mix completo — isso acontece com vocês?"</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quando o time não vende o mix completo, como isso impacta as metas de volume que vocês têm com as indústrias parceiras?<div class="q-tip">🔥 Distribuidores têm metas de sell-in com a indústria. Falhar nelas tem consequência direta no desconto e na parceria.</div></div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se pudessem lançar campanhas rápidas com metas, ranking e premiação automática para o time — como isso mudaria a performance do mix e as metas com as indústrias?</div></div>
+          <div class="urgency-box-p" style="margin-top:12px;">
+            <div class="urgency-title-p">⚡ Gatilhos de urgência</div>
+            <div class="urgency-item-p">🏭 <span><strong>Meta da indústria</strong> — "Quando fecham o trimestre com a [marca]? Estão no ritmo?"</span></div>
+            <div class="urgency-item-p">💸 <span><strong>Verba de co-marketing</strong> — "Vocês usam a verba de trade que recebem da [marca] em campanhas estruturadas?"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASES CPG -->
+    <div class="p-tab-content" id="ptab-cpg-cases-cpg">
+      <div class="card">
+        <div class="card-header"><span>🏆</span> Cases para citar em Bens de Consumo</div>
+        <div class="card-body">
+          <div class="case-row"><div class="case-logo" style="background:#fde68a;color:#92400e;">Mo</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Mondelez</div><div style="font-size:12px;color:#64748b;">Indústria de alimentos · Canal de distribuidores e PDV</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Use para: CPG de grande porte usando plataforma para engajar canal indireto e medir execução de sell-out.</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#fde68a;color:#92400e;">Ba</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Bauducco</div><div style="font-size:12px;color:#64748b;">Alimentos / panificação · Campanha de sazonalidade</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Use para urgência de sazonalidade: "a Bauducco estrutura o canal antes do Natal porque sem plataforma o sell-out cai no momento mais crítico."</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#fde68a;color:#92400e;">3C</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">3 Corações</div><div style="font-size:12px;color:#64748b;">Alimentos / café · Time de vendas e canal</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Use para: CPG médio-grande que estruturou incentivo para equipe comercial e canal simultaneamente.</div></div></div>
+          <div style="background:#fffbeb;border-radius:8px;padding:12px;font-size:12px;color:#92400e;margin-top:8px;border:1px solid #fde68a;">💡 <strong>Como citar:</strong> "Uma empresa parecida com vocês — mesmo segmento, mesmo desafio de sell-out — fez isso com a gente. Acho que valeria 20 minutos para ver se faz sentido pra vocês também."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FINANCEIRO ══ -->
+  <div class="p-vert-content" id="vert-fin">
+    <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#1e40af;margin-bottom:8px;">📖 Vocabulário — fale a língua deles</div>
+    <div class="dict-grid dict-fin">
+      <div class="dict-item"><div class="dict-term">Produção</div><div class="dict-def">Volume total de prêmios, contratos ou crédito gerado pelo canal. Métrica central de desempenho.</div></div>
+      <div class="dict-item"><div class="dict-term">Wallet share</div><div class="dict-def">Fatia da produção do corretor que vai para sua empresa. Um corretor com 5 seguradoras pode dar só 15% pra você.</div></div>
+      <div class="dict-item"><div class="dict-term">Corretor autônomo</div><div class="dict-def">Parceiro independente, sem vínculo empregatício, que vende para múltiplas empresas simultaneamente.</div></div>
+      <div class="dict-item"><div class="dict-term">Persistência</div><div class="dict-def">Taxa de renovação de apólices. Corretores engajados têm maior persistência e melhor qualidade de carteira.</div></div>
+      <div class="dict-item"><div class="dict-term">Meta de produção</div><div class="dict-def">Cota de volume que o canal precisa gerar no mês/trimestre. A pressão de produção é a motivação central.</div></div>
+      <div class="dict-item"><div class="dict-term">Loss ratio / Sinistralidade</div><div class="dict-def">Relação entre prêmios e sinistros pagos. Canal bem engajado tende a vender perfis melhores.</div></div>
+      <div class="dict-item"><div class="dict-term">Agência / Sucursal</div><div class="dict-def">Unidade regional que gerencia corretores locais. O Ger. de Sucursal é frequentemente a persona de entrada.</div></div>
+      <div class="dict-item"><div class="dict-term">Cross-sell</div><div class="dict-def">Venda de produtos adicionais ao mesmo cliente. Corretor desengajado vende só o que conhece — nunca aprofunda portfólio.</div></div>
+    </div>
+
+    <div class="p-tab-nav">
+      <button class="p-tab-btn active" onclick="showPTab('fin','comercial-fin')">Dir./Ger. Comercial</button>
+      <button class="p-tab-btn" onclick="showPTab('fin','canal-fin')">Head de Canal / Corretores</button>
+      <button class="p-tab-btn" onclick="showPTab('fin','cases-fin')">Cases</button>
+    </div>
+
+    <div class="p-tab-content active" id="ptab-fin-comercial-fin">
+      <div class="card">
+        <div class="card-header">
+          <span>👤</span>
+          <div style="flex:1"><strong>Diretor / Gerente Comercial</strong> <span style="font-size:11px;color:#64748b;margin-left:6px;">Responsável por meta de produção</span></div>
+          <span class="badge-out">Outbound</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-fin">Diretor Comercial</span><span class="p-persona-pill pill-fin">Gerente Comercial</span><span class="p-persona-pill pill-fin">Head de Vendas</span><span class="p-persona-pill pill-fin">Superintendente Comercial</span><span class="p-persona-pill pill-fin">Ger. de Sucursal</span></div>
+          <div style="font-size:13px;color:#64748b;margin-bottom:14px;">Pressão de produção mensal. Gerencia equipe própria ou rede de corretores autônomos que trabalham para múltiplas empresas e são difíceis de motivar.</div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>O canal de vocês é equipe própria, corretores autônomos, ou os dois?<div class="q-tip">Corretores autônomos têm wallet share distribuído em várias empresas — muito mais relevantes para a Applause.</div></div></div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Vocês têm algum programa de incentivo para esse canal além da comissão e da tabela de produção?</div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como é a distribuição de produção entre os corretores — concentração nos top 20% com o restante produzindo pouco?<div class="q-tip">Lei de Pareto no financeiro é quase universal. Quando confirmar: "E o wallet share desses corretores de baixa produção — quanto vai para os concorrentes?"</div></div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como vocês comunicam metas de produção para o canal? Os corretores sabem em tempo real onde estão em relação à meta deles?<div class="q-tip">Corretor que não sabe onde está não corre. Falta de visibilidade de meta = baixa produção.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Se vocês conseguissem ativar 20% dos corretores de baixa produção — fazer eles aumentarem o wallet share de vocês em um produto só — qual seria o impacto na produção total do mês?<div class="q-tip">🔥 Faça ele calcular em voz alta. Esse número justifica a Applause.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quando um corretor não atinge meta e a relação esfria — qual o risco de ele migrar o wallet share para um concorrente que oferece melhor suporte e incentivo?<div class="q-tip">Churn de corretor é invisível mas custoso. Reconquistar custa muito mais do que manter engajado.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Vocês conseguem prever a produção do mês com 2 semanas de antecedência — ou só descobrem a shortfall no fechamento?</div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se seus corretores vissem a meta de produção em tempo real, disputassem ranking com os outros da região e recebessem reconhecimento automaticamente — como isso mudaria o wallet share que vocês têm com eles?</div></div>
+          <div class="urgency-box-p">
+            <div class="urgency-title-p">⚡ Gatilhos de urgência</div>
+            <div class="urgency-item-p">📊 <span><strong>Ciclo de produção</strong> — "Quando fecha o trimestre? O canal está no ritmo?"</span></div>
+            <div class="urgency-item-p">🏁 <span><strong>Concorrente com plataforma</strong> — "Porto, Tokio Marine e SulAmérica já usam plataformas de incentivo com corretores. O [concorrente] também?"</span></div>
+            <div class="urgency-item-p">💸 <span><strong>Verba já existe</strong> — "Vocês já gastam em comissão diferenciada ou brindes? Como medem o retorno disso?"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-tab-content" id="ptab-fin-canal-fin">
+      <div class="card">
+        <div class="card-header"><span>🤝</span><div style="flex:1"><strong>Head de Canal / Gerente de Corretores</strong><span style="font-size:11px;color:#64748b;margin-left:6px;">Foco no canal indireto</span></div><span class="badge-out">Outbound</span></div>
+        <div class="card-body">
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-fin">Gerente de Corretores</span><span class="p-persona-pill pill-fin">Head de Parceiros</span><span class="p-persona-pill pill-fin">Ger. de Agentes</span></div>
+          <div style="font-size:13px;color:#64748b;margin-bottom:14px;">Gerencia centenas de parceiros autônomos que trabalham para múltiplas empresas. O desafio é ser a empresa que o corretor coloca em primeiro lugar.</div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como vocês diferenciam a relação com os corretores dos concorrentes que também usam o mesmo canal?<div class="q-tip">O corretor recebe proposta de 5 seguradoras. Por que colocar a de vocês na frente?</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Se um corretor tem a mesma comissão em 3 seguradoras, qual o critério dele para escolher qual vender primeiro?<div class="q-tip">🔥 O engajamento e reconhecimento é o diferencial. Faça ele responder isso em voz alta.</div></div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se seus corretores vissem metas, ranking e reconhecimento da sua empresa toda semana — você acha que isso mudaria o wallet share que vocês têm com eles?</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-tab-content" id="ptab-fin-cases-fin">
+      <div class="card">
+        <div class="card-header"><span>🏆</span> Cases para citar em Financeiro & Seguros</div>
+        <div class="card-body">
+          <div class="case-row"><div class="case-logo" style="background:#bfdbfe;color:#1e40af;">JS</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Junto Seguros</div><div style="font-size:12px;color:#64748b;">Seguradora · Canal de corretores</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Um dos maiores compradores de pontos na plataforma. Use para mostrar seguradora engajando rede de corretores autônomos em escala.</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#bfdbfe;color:#1e40af;">LC</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Logcomex</div><div style="font-size:12px;color:#64748b;">Fintech / SaaS comercial · Time de vendas</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Segundo maior volume de pontos no período. Use para empresa financeira/tech engajando time comercial próprio.</div></div></div>
+          <div style="background:#eff6ff;border-radius:8px;padding:12px;font-size:12px;color:#1e40af;margin-top:8px;border:1px solid #bfdbfe;">💡 Fale em termos de produção e wallet share, não engajamento: "A seguradora X usa a Applause para garantir que os corretores coloquem o produto dela primeiro."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ VAREJO ══ -->
+  <div class="p-vert-content" id="vert-var">
+    <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#065f46;margin-bottom:8px;">📖 Vocabulário — fale a língua deles</div>
+    <div class="dict-grid dict-var">
+      <div class="dict-item"><div class="dict-term">LFL / Like-for-like</div><div class="dict-def">Crescimento comparando lojas existentes nos dois períodos. Mede a saúde real das operações — excluindo novas unidades.</div></div>
+      <div class="dict-item"><div class="dict-term">Royalty</div><div class="dict-def">% do faturamento pago pelo franqueado à franqueadora. Franqueado abaixo do mínimo é risco financeiro e jurídico para toda a rede.</div></div>
+      <div class="dict-item"><div class="dict-term">Fundo de marketing</div><div class="dict-def">Contribuição do franqueado para o fundo coletivo de publicidade da rede. Franqueados engajados defendem melhor esse investimento.</div></div>
+      <div class="dict-item"><div class="dict-term">Ticket médio</div><div class="dict-def">Valor médio por transação. Campanhas de up-sell aumentam ticket sem aumentar tráfego — resultado mais eficiente para a loja.</div></div>
+      <div class="dict-item"><div class="dict-term">Conversão</div><div class="dict-def">% de visitantes que compram. Em franquias de serviço (academia, clínica), conversão é a métrica mais crítica para o franqueado.</div></div>
+      <div class="dict-item"><div class="dict-term">COF / Custo de ocupação</div><div class="dict-def">Custos fixos da loja (aluguel, condomínio, energia). Com LFL negativo, o COF pesa cada vez mais — urgência real.</div></div>
+      <div class="dict-item"><div class="dict-term">Consultor de campo (COC)</div><div class="dict-def">Profissional da franqueadora que visita os franqueados. Frequentemente o ponto de contato para campanhas na rede.</div></div>
+      <div class="dict-item"><div class="dict-term">PDV próprio vs. franqueado</div><div class="dict-def">Loja própria: equipe da empresa, mais fácil de engajar. Franqueado: dono independente, resistente a imposições — precisa ver o benefício.</div></div>
+    </div>
+
+    <div class="p-tab-nav">
+      <button class="p-tab-btn active" onclick="showPTab('var','comercial-var')">Dir./Ger. Comercial</button>
+      <button class="p-tab-btn" onclick="showPTab('var','franquia-var')">Ger. de Franquias</button>
+      <button class="p-tab-btn" onclick="showPTab('var','cases-var')">Cases</button>
+    </div>
+
+    <div class="p-tab-content active" id="ptab-var-comercial-var">
+      <div class="card">
+        <div class="card-header"><span>👤</span><div style="flex:1"><strong>Diretor / Gerente Comercial</strong><span style="font-size:11px;color:#64748b;margin-left:6px;">Responsável por metas de venda e LFL</span></div><span class="badge-out">Outbound</span></div>
+        <div class="card-body">
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-var">Diretor Comercial</span><span class="p-persona-pill pill-var">Gerente Comercial</span><span class="p-persona-pill pill-var">Head de Vendas</span><span class="p-persona-pill pill-var">Gerente Regional</span><span class="p-persona-pill pill-var">Dir. de Operações</span></div>
+          <div style="font-size:13px;color:#64748b;margin-bottom:14px;">Meta de faturamento e LFL. Alta rotatividade de equipe de loja. Dificuldade de padronizar performance entre unidades. Em franquias: franqueados são independentes e resistentes.</div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>A estrutura de vocês é lojas próprias, franquias ou os dois?<div class="q-tip">Loja própria = equipe engajável por hierarquia. Franquia = dono independente que precisa querer participar.</div></div></div>
+          <div class="q-block q-s"><span class="spin-tag tag-s">S</span><div>Vocês têm campanhas de incentivo para o time de loja além do PLR — para puxar ticket médio ou conversão?</div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Quando lançam uma campanha de vendas para a rede, o LFL sobe de forma consistente entre as unidades ou sempre tem lojas que ficam para trás?<div class="q-tip">A variância de LFL entre lojas é o problema central — e é o que a Applause ataca.</div></div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como o vendedor de loja fica sabendo da meta e do status da campanha no dia a dia? Ele sabe onde está em relação à conversão ou ticket médio?<div class="q-tip">Hipótese: "Ouço muito que o vendedor só descobre se bateu a meta no final do mês — quando já não dá pra mudar nada."</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Se as lojas abaixo da média chegassem ao LFL das top performers — mesmo que metade do caminho — qual seria o impacto no resultado total da rede?<div class="q-tip">🔥 O gap de LFL é enorme e quantificável. Deixe ele calcular — o número vai impressioná-lo também.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Com o turnover alto, quanto tempo uma pessoa nova leva para chegar no ritmo de conversão de quem já está há 6 meses?<div class="q-tip">Liga desengajamento a custo de ramp e perda de conversão durante a adaptação.</div></div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Se uma loja fica com LFL negativo por 3 meses sem intervenção — considerando o custo de ocupação — qual o impacto financeiro real para o franqueado e para a rede?</div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se o time de loja conseguisse ver a meta de conversão e ticket médio em tempo real, competir com outras lojas num ranking da rede e receber reconhecimento instantâneo — você acha que isso moveria o LFL das lojas do meio para cima?</div></div>
+          <div class="urgency-box-p">
+            <div class="urgency-title-p">⚡ Gatilhos de urgência</div>
+            <div class="urgency-item-p">📅 <span><strong>Sazonalidade</strong> — "Qual é a campanha mais importante do semestre? Implantação leva 4 semanas."</span></div>
+            <div class="urgency-item-p">📉 <span><strong>LFL negativo</strong> — "Como está o like-for-like esse trimestre? Esse pode ser o semestre de virar o jogo."</span></div>
+            <div class="urgency-item-p">🏁 <span><strong>ABF / Concorrente</strong> — "Muitas redes da ABF já usam plataforma de incentivo para engajar franqueados — é um diferencial que a franqueadora oferece."</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-tab-content" id="ptab-var-franquia-var">
+      <div class="card">
+        <div class="card-header"><span>🏪</span><div style="flex:1"><strong>Gerente de Franquias / Expansão</strong><span style="font-size:11px;color:#64748b;margin-left:6px;">Específico de redes franqueadas</span></div><span class="badge-out">Outbound</span></div>
+        <div class="card-body">
+          <div style="margin-bottom:10px;"><span class="p-persona-pill pill-var">Gerente de Franquias</span><span class="p-persona-pill pill-var">Head de Expansão</span><span class="p-persona-pill pill-var">Consultor de Campo</span><span class="p-persona-pill pill-var">Ger. de Relacionamento</span></div>
+          <div style="font-size:13px;color:#64748b;margin-bottom:14px;">Franqueados são donos de negócio — não funcionários. Resistem a imposições. Precisam ver ROI direto para aderir. O desafio é engajá-los sem autoridade hierárquica.</div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Como vocês engajam os franqueados nas campanhas da rede? Eles aderem bem ou sempre tem resistência — especialmente os que já têm LFL pressionado?<div class="q-tip">Franqueado resistente = franqueadora perde velocidade de execução exatamente quando mais precisa.</div></div></div>
+          <div class="q-block q-p"><span class="spin-tag tag-p">P</span><div>Quando tem uma campanha importante, como monitoram se as unidades estão executando de verdade — ou só descobrem pelo dado de LFL no fechamento?</div></div>
+          <div class="q-block q-i"><span class="spin-tag tag-i">I</span><div>Quando franqueados que não engajam ficam com LFL negativo e abaixo do royalty mínimo, como isso aparece na saúde financeira e na imagem da rede?<div class="q-tip">🔥 Franqueado abaixo do royalty mínimo gera atrito, inadimplência e risco de rescisão — com custo jurídico alto.</div></div></div>
+          <div class="q-block q-n"><span class="spin-tag tag-n">N</span><div>Se você pudesse dar ao franqueado uma ferramenta que ele mesmo quer usar — ranking das unidades, metas claras de ticket e conversão, reconhecimento da franqueadora — isso mudaria a aderência às campanhas e reduziria unidades abaixo do royalty?</div></div>
+          <div style="background:#ecfdf5;border-radius:8px;padding:12px;font-size:12px;color:#065f46;margin-top:12px;border:1px solid #a7f3d0;">💡 <strong>Angulação chave:</strong> a Applause não é "mais um sistema da franqueadora". É uma ferramenta que o franqueado vai querer porque o beneficia diretamente (ranking, metas, premiação). Isso resolve o problema de resistência.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-tab-content" id="ptab-var-cases-var">
+      <div class="card">
+        <div class="card-header"><span>🏆</span> Cases para citar em Varejo & Franquias</div>
+        <div class="card-body">
+          <div class="case-row"><div class="case-logo" style="background:#a7f3d0;color:#065f46;">Ca</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Carrefour</div><div style="font-size:12px;color:#64748b;">Varejo · Equipe de loja em larga escala</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Maior cliente da base em volume. Use para mostrar varejo de grande porte engajando equipes de múltiplas lojas com metas e missões.</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#a7f3d0;color:#065f46;">OC</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Oral Centter</div><div style="font-size:12px;color:#64748b;">Franquia odontológica · Rede de unidades franqueadas</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Deal ganho em franquias. Usa plataforma para engajar equipe de cada unidade com metas e reconhecimento da franqueadora.</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#a7f3d0;color:#065f46;">Es</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Espaçolaser</div><div style="font-size:12px;color:#64748b;">Franquia de estética · Rede de lojas</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Franquia de serviços com meta de conversão por unidade. Exemplo além de produtos físicos.</div></div></div>
+          <div class="case-row"><div class="case-logo" style="background:#a7f3d0;color:#065f46;">Ad</div><div><div style="font-size:13px;font-weight:600;color:#1e2543;">Adidas</div><div style="font-size:12px;color:#64748b;">Varejo / Moda esportiva · Canal e equipe</div><div style="font-size:12px;font-style:italic;margin-top:3px;color:#1e2543;">Marca com canal multimarcas — incentivo para equipe e ponto de venda simultaneamente.</div></div></div>
+          <div style="background:#ecfdf5;border-radius:8px;padding:12px;font-size:12px;color:#065f46;margin-top:8px;border:1px solid #a7f3d0;">💡 <strong>Contexto ABF:</strong> A Applause esteve na ABF Expo. Use: "Muitas franqueadoras de diferentes segmentos estão avaliando plataforma de incentivo para engajar franqueados — é o caminho que o setor está tomando."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJEÇÕES -->
+  <div class="card" style="margin-top:24px;">
+    <div class="card-header"><span>🛡️</span> Objeções comuns & como responder</div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;">
+          <div style="font-weight:600;color:#991b1b;margin-bottom:4px;">💬 "Não tenho budget agora."</div>
+          <div style="color:#1e2543;">"Você sabe quanto está gastando hoje em incentivos manuais — brindes, WhatsApp, gestão? Na maioria dos casos a Applause substitui um custo que já existe. Vale a conversa para entender se faz sentido?"</div>
+        </div>
+        <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;">
+          <div style="font-weight:600;color:#991b1b;margin-bottom:4px;">💬 "Já temos uma solução para isso."</div>
+          <div style="color:#1e2543;">"Me conta como funciona? Boa parte das empresas que falam isso usam planilha + WhatsApp. Nosso diferencial é metas em tempo real, premiação automática e ranking. Você está satisfeito com os resultados que tem hoje?"</div>
+        </div>
+        <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;">
+          <div style="font-weight:600;color:#991b1b;margin-bottom:4px;">💬 "Não é prioridade agora."</div>
+          <div style="color:#1e2543;">"Faz sentido. Quando seria? [Aguarda.] Pergunto porque a implantação leva 4 semanas — se tem uma campanha importante chegando, o timing conta. Qual é a próxima campanha grande de vocês?"</div>
+        </div>
+        <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;">
+          <div style="font-weight:600;color:#991b1b;margin-bottom:4px;">💬 "Me manda um email."</div>
+          <div style="color:#1e2543;">"Claro, mando. Antes — pra eu personalizar — você tem alguma campanha nos próximos 2 meses? Assim faço o email mais relevante para o seu momento." [Engaja antes de desligar.]</div>
+        </div>
+      </div>
+      <div style="background:#f0fdf4;border-radius:8px;padding:12px;font-size:12px;color:#065f46;border:1px solid #bbf7d0;">
+        <strong>Como passar o bastão para o AE:</strong> Lead confirmou pelo menos uma dor (P) com impacto real (I)? Está qualificado. Passe cargo, empresa, dor principal, o que ele disse literalmente e se há urgência de campanha. A reunião deve estar na agenda antes de desligar.
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
