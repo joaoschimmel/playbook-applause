@@ -1947,20 +1947,28 @@ Responda em português, de forma direta e útil. Máximo 200 palavras por respos
 `;
 
 function showVertical(id) {
-  document.querySelectorAll(".p-vert-content").forEach(c => c.classList.remove("active"));
-  document.querySelectorAll(".p-vert-btn").forEach(b => { b.classList.remove("active-cpg","active-fin","active-var"); });
-  document.getElementById("vert-" + id).classList.add("active");
-  const btn = [...document.querySelectorAll(".p-vert-btn")].find(b => b.getAttribute("onclick")?.includes("'" + id + '"));
-  if (btn) btn.classList.add("active-" + id);
+  document.querySelectorAll('.p-vert-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.p-vert-btn').forEach(b => {
+    b.classList.remove('active-cpg', 'active-fin', 'active-var');
+  });
+  document.getElementById('vert-' + id).classList.add('active');
+  document.querySelectorAll('.p-vert-btn').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + id + "'")) {
+      b.classList.add('active-' + id);
+    }
+  });
 }
 
 function showPTab(vertical, tab) {
-  document.querySelectorAll("#vert-" + vertical + " .p-tab-content").forEach(c => c.classList.remove("active"));
-  document.querySelectorAll("#vert-" + vertical + " .p-tab-btn").forEach(b => b.classList.remove("active"));
-  const el = document.getElementById("ptab-" + vertical + "-" + tab);
-  if (el) el.classList.add("active");
-  const btn = [...document.querySelectorAll("#vert-" + vertical + " .p-tab-btn")].find(b => b.getAttribute("onclick")?.includes("'" + tab + '"));
-  if (btn) btn.classList.add("active");
+  document.querySelectorAll('#vert-' + vertical + ' .p-tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('#vert-' + vertical + ' .p-tab-btn').forEach(b => b.classList.remove('active'));
+  var el = document.getElementById('ptab-' + vertical + '-' + tab);
+  if (el) el.classList.add('active');
+  document.querySelectorAll('#vert-' + vertical + ' .p-tab-btn').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + tab + "'")) {
+      b.classList.add('active');
+    }
+  });
 }
 
 function showPage(id) {
@@ -1973,7 +1981,8 @@ function showPage(id) {
     qualificacao: 'Qualificação', funil: 'Funil HubSpot', cadencias: 'Cadências',
     outbound: 'Outbound BDR', time: 'Time', metas: 'Metas',
     comissoes: 'Comissões', calls: 'Calls de Referência', hubspot: 'HubSpot',
-    onboarding: 'Onboarding'
+    onboarding: 'Onboarding',
+    personas: 'Personas & SPIN'
   };
 
   document.getElementById('topbar-title').textContent = titles[id] || id;
