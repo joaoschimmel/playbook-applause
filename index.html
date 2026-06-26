@@ -363,7 +363,44 @@
   }
   .campo-item::before { content: '·'; color: var(--muted); }
 
-  /* TEAM */
+  /* CASES */
+  .case-filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .case-filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .case-filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .case-card[href]:not([href="#"]):hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
+  .case-card-header { display: flex; justify-content: space-between; align-items: center; }
+  .case-animal { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .case-company { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); }
+  .case-desc { font-size: 13px; color: var(--muted); line-height: 1.5; flex: 1; }
+  .case-footer { font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
   .team-card {
     background: var(--white);
     border-radius: 12px;
@@ -914,6 +951,7 @@
   <div class="sidebar-section">
     <div class="sidebar-section-label">Recursos</div>
     <div class="nav-item" onclick="showPage('calls')"><span class="icon">🎙️</span> Calls de Referência</div>
+    <div class="nav-item" onclick="showPage('cases')"><span class="icon">🏆</span> Cases de Sucesso</div>
     <div class="nav-item" onclick="showPage('hubspot')"><span class="icon">🔗</span> HubSpot</div>
     <div class="nav-item" onclick="showPage('onboarding')"><span class="icon">🎓</span> Onboarding</div>
   </div>
@@ -927,11 +965,6 @@
 <main class="main">
   <div class="topbar">
     <div class="topbar-title" id="topbar-title">Início</div>
-    <div class="topbar-badges">
-      <span class="badge green">🟢 Ativo</span>
-      <span class="badge blue">Meta 2026: R$10M ARR</span>
-      <span class="badge">Jul/26 → Jun/27</span>
-    </div>
   </div>
 
   <!-- HOME -->
@@ -1193,8 +1226,54 @@
   <!-- QUALIFICAÇÃO -->
   <div class="page" id="page-qualificacao">
     <div class="section-title">Qualificação de Leads</div>
-    <p class="section-sub">4 critérios obrigatórios — lógica AND. Um único ✗ desqualifica. Todos precisam ser ✓ para agendar reunião com o AE.</p>
+    <p class="section-sub">5 critérios — lógica AND. Um único ✗ desqualifica (exceto onde indicado por animal). Todos os obrigatórios precisam ser ✓ para agendar reunião com o AE.</p>
 
+    <!-- REGRAS POR ANIMAL -->
+    <div class="section-title" style="margin-bottom:12px;">Regras por Animal</div>
+    <div class="grid-2" style="margin-bottom:28px;">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🐋 Baleia & 🐘 Elefante</div></div>
+        <div class="card-body">
+          <div class="campo-list">
+            <div class="campo-item">✅ DOR: ≥1 dor + verbalizou impacto <span style="font-weight:400;color:var(--muted);">(em outbound, podemos inferir a dor com base no perfil — não é obrigatório verbalizar)</span></div>
+            <div class="campo-item">✅ OPERAÇÃO: prática ativa + processo sem incompatibilidades</div>
+            <div class="campo-item">⬜ FINANCEIRO: subentendido — empresa grande tem verba. Confirmar só se houver dúvida</div>
+            <div class="campo-item">✅ PERFIL: porte + Analista+ com plano de escalada ao decisor</div>
+            <div class="campo-item">🔵 TIMING: perguntar, mas <strong>não obrigatório</strong> — nós fomos atrás</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🐴 Cavalo & 🦀 Cavalo Marinho</div></div>
+        <div class="card-body">
+          <div class="campo-list">
+            <div class="campo-item">✅ DOR: ≥1 dor + implicação verbalizada (sem = nutrição)</div>
+            <div class="campo-item">✅ OPERAÇÃO: cultura de incentivo + prática ativa compatível</div>
+            <div class="campo-item">✅ FINANCEIRO: <strong>obrigatório</strong> validar ativamente <span style="font-size:11px;background:#fef2f2;color:#991b1b;border-radius:4px;padding:1px 6px;font-weight:600;margin-left:4px;">🦀 Marinho inclui verba de incentivo</span></div>
+            <div class="campo-item">✅ PERFIL: Coord+ com acesso ao decisor (Cavalo) / Decisor direto (Marinho)</div>
+            <div class="campo-item">✅ TIMING: <strong>obrigatório</strong> — intenção de compra deve ser comprovada</div>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:var(--muted);background:#fef2f2;border-radius:8px;padding:8px 12px;">
+            ⚠️ Cavalo Marinho: 2 custos separados — mensalidade + verba de incentivo. Ambos devem ser confirmados.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AVISO DE DÚVIDA -->
+    <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:16px 20px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;">
+      <div style="font-size:22px;line-height:1;">⚠️</div>
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:#92400e;margin-bottom:6px;">Dúvida se deve agendar ou não?</div>
+        <div style="font-size:13px;color:#78350f;line-height:1.6;">
+          1. Consulte primeiro as regras acima e os critérios C1–C5.<br>
+          2. Se a dúvida persistir, acione os <strong>AEs ou a liderança</strong> para decidirem em conjunto — não agende no achismo.<br>
+          3. Caso necessário, o BDR pode fazer uma <strong>call rápida</strong> para apresentar a plataforma e explorar melhor a qualificação antes de passar o lead.
+        </div>
+      </div>
+    </div>
+
+    <!-- LINK APRESENTAÇÃO -->
     <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
       <a href="https://docs.google.com/presentation/d/1QbM4zjN2Qlj1vtb7kblnrUV-QZ7DQ107Yng4cWpOs5o/edit" target="_blank" class="link-card" style="flex:1;min-width:200px;">
         <div class="link-icon yellow">📊</div>
@@ -1245,8 +1324,16 @@
         <div class="campo-item">Possui plataforma de Premiação — proxy de budget histórico</div>
         <div class="campo-item">Budget Disponível — capacidade financeira confirmada</div>
       </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:8px 12px;">
-        ⚠️ Para Baleia e Elefante, este critério é <strong>SUBENTENDIDO</strong> — empresa grande tem verba. Confirmar só se houver sinal de dúvida.
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:12px;background:var(--cream);border-radius:8px;padding:8px 12px;border:1px solid var(--border);">
+          ⬜ <strong>Baleia & Elefante:</strong> subentendido — empresa grande tem verba. Confirmar só se houver sinal de dúvida.
+        </div>
+        <div style="font-size:12px;background:#fef2f2;border-radius:8px;padding:8px 12px;border:1px solid #fecaca;">
+          ✅ <strong>Cavalo:</strong> obrigatório validar budget ativamente antes de agendar reunião com AE.
+        </div>
+        <div style="font-size:12px;background:#fef2f2;border-radius:8px;padding:8px 12px;border:1px solid #fecaca;">
+          ✅ <strong>Cavalo Marinho:</strong> obrigatório validar <em>dois</em> custos — mensalidade da plataforma + verba de incentivo separada.
+        </div>
       </div>
     </div>
 
@@ -1265,31 +1352,25 @@
       </div>
     </div>
 
-    <div class="section-title" style="margin-top:24px;">Regras por Animal</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-header"><div class="card-title">🐋 Baleia & 🐘 Elefante</div></div>
-        <div class="card-body">
-          <div class="campo-list">
-            <div class="campo-item">✅ DOR: ≥1 dor + verbalizou impacto</div>
-            <div class="campo-item">✅ OPERAÇÃO: prática ativa + processo sem incompatibilidades</div>
-            <div class="campo-item">⬜ FINANCEIRO: subentendido (confirmar só se houver dúvida)</div>
-            <div class="campo-item">✅ PERFIL: porte + Analista+ com plano de escalada ao decisor</div>
-          </div>
+    <div class="criterio-card">
+      <div class="criterio-header">
+        <div class="criterio-dot" style="background:#8b5cf6;"></div>
+        <div>
+          <div class="criterio-title">C5 · Timing / Intenção de Compra</div>
+          <div class="criterio-question">O lead tem janela de decisão clara ou sinais de intenção de compra?</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">🐴 Cavalo & 🦀 Cavalo Marinho</div></div>
-        <div class="card-body">
-          <div class="campo-list">
-            <div class="campo-item">✅ DOR: ≥1 dor + implicação verbalizada (sem = nutrição)</div>
-            <div class="campo-item">✅ OPERAÇÃO: cultura de incentivo + prática ativa compatível</div>
-            <div class="campo-item">✅ FINANCEIRO: OBRIGATÓRIO validar ativamente</div>
-            <div class="campo-item">✅ PERFIL: Coord+ com acesso ao decisor (Cavalo) / Decisor direto (Marinho)</div>
-          </div>
-          <div style="margin-top:10px;font-size:12px;color:var(--muted);background:#fef2f2;border-radius:8px;padding:8px 12px;">
-            ⚠️ Cavalo Marinho: 2 custos separados — mensalidade + verba de incentivo. Ambos devem ser confirmados.
-          </div>
+      <div class="campo-list">
+        <div class="campo-item">Há campanha ou projeto previsto nos próximos 60–90 dias?</div>
+        <div class="campo-item">O lead demonstrou iniciativa ou urgência na conversa?</div>
+        <div class="campo-item">Existe um evento externo (sazonalidade, meta, budget ciclo) que cria urgência?</div>
+      </div>
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:12px;background:var(--cream);border-radius:8px;padding:8px 12px;border:1px solid var(--border);">
+          🔵 <strong>Baleia & Elefante:</strong> perguntar sempre, mas <strong>não obrigatório</strong> — nós fomos atrás, o timing pode ser construído.
+        </div>
+        <div style="font-size:12px;background:#fef2f2;border-radius:8px;padding:8px 12px;border:1px solid #fecaca;">
+          ✅ <strong>Cavalo & Cavalo Marinho:</strong> obrigatório — intenção de compra deve ser comprovada antes de passar ao AE.
         </div>
       </div>
     </div>
@@ -1865,8 +1946,6 @@
     </div>
   </div>
 
-</main>
-
 <!-- AI PANEL -->
 <div class="ai-panel" id="ai-panel">
   <div class="ai-header">
@@ -1971,6 +2050,15 @@ function showPTab(vertical, tab) {
   });
 }
 
+function filterCases(categoria) {
+  document.querySelectorAll('.case-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === categoria);
+  });
+  document.querySelectorAll('.case-card').forEach(card => {
+    card.style.display = (categoria === 'todos' || card.dataset.categoria === categoria) ? '' : 'none';
+  });
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -1982,7 +2070,8 @@ function showPage(id) {
     outbound: 'Outbound BDR', time: 'Time', metas: 'Metas',
     comissoes: 'Comissões', calls: 'Calls de Referência', hubspot: 'HubSpot',
     onboarding: 'Onboarding',
-    personas: 'Personas & SPIN'
+    personas: 'Personas & SPIN',
+    cases: 'Cases de Sucesso'
   };
 
   document.getElementById('topbar-title').textContent = titles[id] || id;
@@ -2384,6 +2473,92 @@ async function sendAI() {
     </div>
   </div>
 </div>
+
+<!-- CASES DE SUCESSO -->
+<div class="page" id="page-cases">
+  <div class="section-title">Cases de Sucesso</div>
+  <p class="section-sub">Principais clientes e histórias de resultado. Clique em um case para acessar o material completo.</p>
+
+  <!-- FILTROS -->
+  <div id="cases-filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+    <button onclick="filterCases('todos')" class="case-filter-btn active" data-filter="todos">Todos</button>
+    <button onclick="filterCases('industria')" class="case-filter-btn" data-filter="industria">🏭 Indústria</button>
+    <button onclick="filterCases('varejo')" class="case-filter-btn" data-filter="varejo">🛍️ Varejo & Franquias</button>
+    <button onclick="filterCases('comercial')" class="case-filter-btn" data-filter="comercial">💼 Times Comerciais</button>
+    <button onclick="filterCases('financeiro')" class="case-filter-btn" data-filter="financeiro">🏦 Financeiro & Seguros</button>
+  </div>
+
+  <!-- GRID DE CASES -->
+  <div id="cases-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+
+    <a href="#" class="case-card" data-categoria="industria" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🐋 Baleia</div>
+        <span class="badge" style="background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏭 Indústria</span>
+      </div>
+      <div class="case-company">Empresa A</div>
+      <div class="case-desc">Incentivo para força de vendas em canal indireto — aumento de sell-out em 30%.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+    <a href="#" class="case-card" data-categoria="varejo" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🐘 Elefante</div>
+        <span class="badge" style="background:#fefce8;color:#854d0e;border-color:#fde047;">🛍️ Varejo</span>
+      </div>
+      <div class="case-company">Empresa B</div>
+      <div class="case-desc">Programa de reconhecimento para rede de franquias — engajamento de 1.200 franqueados.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+    <a href="#" class="case-card" data-categoria="comercial" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🐴 Cavalo</div>
+        <span class="badge" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">💼 Comercial</span>
+      </div>
+      <div class="case-company">Empresa C</div>
+      <div class="case-desc">Gamificação do time comercial — redução do ciclo de vendas e aumento de conversão.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+    <a href="#" class="case-card" data-categoria="financeiro" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🐴 Cavalo</div>
+        <span class="badge" style="background:#fdf4ff;color:#6b21a8;border-color:#e9d5ff;">🏦 Financeiro</span>
+      </div>
+      <div class="case-company">Empresa D</div>
+      <div class="case-desc">Plataforma de incentivo para corretores e parceiros — crescimento de carteira ativa.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+    <a href="#" class="case-card" data-categoria="industria" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🦀 Cavalo Marinho</div>
+        <span class="badge" style="background:#f0f9ff;color:#0369a1;border-color:#bae6fd;">🏭 Indústria</span>
+      </div>
+      <div class="case-company">Empresa E</div>
+      <div class="case-desc">Premiação de distribuidores em região — adesão rápida ao programa em menos de 30 dias.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+    <a href="#" class="case-card" data-categoria="varejo" onclick="return false;" style="opacity:.6;cursor:not-allowed;" title="Link em breve">
+      <div class="case-card-header">
+        <div class="case-animal">🐋 Baleia</div>
+        <span class="badge" style="background:#fefce8;color:#854d0e;border-color:#fde047;">🛍️ Varejo</span>
+      </div>
+      <div class="case-company">Empresa F</div>
+      <div class="case-desc">Incentivo nacional para promotores de PDV — cobertura de 5.000+ pontos de venda.</div>
+      <div class="case-footer">🔗 Link em breve</div>
+    </a>
+
+  </div>
+
+  <div style="margin-top:20px;font-size:12px;color:var(--muted);background:var(--cream);border-radius:8px;padding:10px 14px;border:1px solid var(--border);">
+    📎 Os links para os materiais completos serão adicionados em breve. Entre em contato com a liderança para acesso antecipado.
+  </div>
+</div>
+
+</main>
 
 </body>
 </html>
